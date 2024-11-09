@@ -2,18 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerControl : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed = 1f;
 
+    public static PlayerController Instance;
     private PlayerControls _playerControls;
     private Vector2 _movement;
     private Rigidbody2D _rb;
     private Animator _myAnimator;
     private SpriteRenderer _mySpriteRenderer;
+    private bool _facingLeft = false; 
+    public bool FacingLeft { get { return _facingLeft; } set { _facingLeft = value; } }
 
     private void Awake()
     {
+        Instance = this;
         _playerControls = new PlayerControls();
         _rb = GetComponent<Rigidbody2D>();
         _myAnimator = GetComponent<Animator>();
@@ -57,10 +61,14 @@ public class PlayerControl : MonoBehaviour
         if (horizontalInput < 0)
         {
             _mySpriteRenderer.flipX = true;
+            _facingLeft = true;
         }
         else if (horizontalInput > 0)
         {
             _mySpriteRenderer.flipX = false;
+            _facingLeft = false;
         }
     }
+
+
 }
