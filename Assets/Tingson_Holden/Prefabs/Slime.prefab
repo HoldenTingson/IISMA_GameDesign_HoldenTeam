@@ -15,6 +15,9 @@ GameObject:
   - component: {fileID: 8749267036121203842}
   - component: {fileID: 971247595450733434}
   - component: {fileID: 3639248977334936093}
+  - component: {fileID: 3069152195520035912}
+  - component: {fileID: 6511974248468593396}
+  - component: {fileID: 3090103825811444643}
   m_Layer: 0
   m_Name: Slime
   m_TagString: Untagged
@@ -197,3 +200,44 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3069152195520035912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3407274111213952158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 750895fb6dd26bc44872f26a03124e19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startingHealth: 3
+  _deathVfxPrefab: {fileID: 2284033693174351575, guid: c1883afe203bda743ba480963ff40383, type: 3}
+--- !u!114 &6511974248468593396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3407274111213952158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae97ad90b2906f1489e74a4f9e88300e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _knockBackTime: 0.2
+--- !u!114 &3090103825811444643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3407274111213952158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd8eae858eec5a6468ce9b9b54d55f57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _whiteFlashMat: {fileID: 2100000, guid: fb852a2e1c5a7a74d8bd4b5c062f0241, type: 2}
+  _restoreDefaultMatTime: 0.2
