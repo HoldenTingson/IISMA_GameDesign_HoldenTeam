@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _moveSpeed = 1f;
     [SerializeField] private float _dashSpeed = 4f;
     [SerializeField] private TrailRenderer _myTrailRenderer;
+    [SerializeField] private Transform _weaponCollider;
 
     public static PlayerController Instance;
     private PlayerControls _playerControls;
@@ -48,6 +49,11 @@ public class PlayerController : MonoBehaviour
     {
         AdjustPlayerFacingDirection();
         Move();
+    }
+
+    public Transform GetWeaponCollider()
+    {
+        return _weaponCollider;
     }
 
     private void PlayerInput()

@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Damage : MonoBehaviour
 {
-    [SerializeField] private int _damageAmount = 1;
+    private int _damageAmount;
 
-    private void Awake()
+    private void Start()
     {
-        this.gameObject.SetActive(false);
+        MonoBehaviour currentActiveWeapon = ActiveWeapon.Instance.CurrentActiveWeapon;
+        _damageAmount = (currentActiveWeapon as IWeapon).GetWeaponInfo().weaponDamage;
     }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         EnemyHealth enemyHealth = other.gameObject.GetComponent<EnemyHealth>();
