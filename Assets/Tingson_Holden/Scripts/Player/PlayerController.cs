@@ -2,31 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Singleton<PlayerController>
 {
     [SerializeField] private float _moveSpeed = 1f;
     [SerializeField] private float _dashSpeed = 4f;
     [SerializeField] private TrailRenderer _myTrailRenderer;
     [SerializeField] private Transform _weaponCollider;
 
-    public static PlayerController Instance;
     private PlayerControls _playerControls;
     private Vector2 _movement;
     private Rigidbody2D _rb;
     private Animator _myAnimator;
     private SpriteRenderer _mySpriteRenderer;
     private float _startingMoveSpeed;
+    private KnockBack _knockBack;
     private bool _facingLeft = false;
     private bool _isDashing = false;
     public bool FacingLeft { get { return _facingLeft; } }
 
-    private void Awake()
+    protected override void Awake()
     {
-        Instance = this;
+        base.Awake();
         _playerControls = new PlayerControls();
         _rb = GetComponent<Rigidbody2D>();
         _myAnimator = GetComponent<Animator>();
         _mySpriteRenderer = GetComponent<SpriteRenderer>();
+        _knockBack = GetComponent<KnockBack>();
     }
 
     private void Start()
@@ -66,6 +67,10 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
+        if (_knockBack.GettingKnockedBack)
+        {
+            return;
+        }
         _rb.MovePosition(_rb.position + _movement * (_moveSpeed * Time.fixedDeltaTime));
     }
 
