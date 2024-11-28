@@ -30,8 +30,9 @@ public class Projectile : MonoBehaviour
     {
         EnemyHealth enemyHealth = other.gameObject.GetComponent<EnemyHealth>();
         Indesctructible indestructible = other.gameObject.GetComponent<Indesctructible>();
+        Destructible desctructible = other.gameObject.GetComponent<Destructible>();
 
-        if (!other.isTrigger && (enemyHealth || indestructible))
+        if (!other.isTrigger && (enemyHealth || indestructible || desctructible))
         {
             Instantiate(_particleOnHitPrefabVfx, transform.position, transform.rotation);
             Destroy(gameObject);

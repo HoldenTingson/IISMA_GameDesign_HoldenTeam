@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : Singleton<PlayerController>
 {
-    [SerializeField] private float _moveSpeed = 1f;
+    [SerializeField] private float _moveSpeed = 2f;
     [SerializeField] private float _dashSpeed = 4f;
     [SerializeField] private TrailRenderer _myTrailRenderer;
     [SerializeField] private Transform _weaponCollider;
@@ -107,7 +107,7 @@ public class PlayerController : Singleton<PlayerController>
         float dashTime = .2f;
         float dashCD = .25f;
         yield return new WaitForSeconds(dashTime);
-        _moveSpeed /= _startingMoveSpeed;
+        _moveSpeed = _startingMoveSpeed;
         _myTrailRenderer.emitting = false;
         yield return new WaitForSeconds(dashCD);
         _isDashing = false;
