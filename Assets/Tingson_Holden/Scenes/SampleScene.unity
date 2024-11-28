@@ -132,6 +132,83 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1406744486784233679, guid: b4022ae9970f294439e4bf97d6afe682, type: 3}
   m_PrefabInstance: {fileID: 865962164}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &102809261
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2577585254963922478, guid: c18ae4d82cd54714cb8967b02bc591e0, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2577585254963922478, guid: c18ae4d82cd54714cb8967b02bc591e0, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2577585254963922478, guid: c18ae4d82cd54714cb8967b02bc591e0, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2577585254963922478, guid: c18ae4d82cd54714cb8967b02bc591e0, type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2577585254963922480, guid: c18ae4d82cd54714cb8967b02bc591e0, type: 3}
+      propertyPath: m_Name
+      value: PF Props Crate
+      objectReference: {fileID: 0}
+    - target: {fileID: 2577585254963922481, guid: c18ae4d82cd54714cb8967b02bc591e0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.93389845
+      objectReference: {fileID: 0}
+    - target: {fileID: 2577585254963922481, guid: c18ae4d82cd54714cb8967b02bc591e0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.0399694
+      objectReference: {fileID: 0}
+    - target: {fileID: 2577585254963922481, guid: c18ae4d82cd54714cb8967b02bc591e0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2577585254963922481, guid: c18ae4d82cd54714cb8967b02bc591e0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2577585254963922481, guid: c18ae4d82cd54714cb8967b02bc591e0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2577585254963922481, guid: c18ae4d82cd54714cb8967b02bc591e0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2577585254963922481, guid: c18ae4d82cd54714cb8967b02bc591e0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2577585254963922481, guid: c18ae4d82cd54714cb8967b02bc591e0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2577585254963922481, guid: c18ae4d82cd54714cb8967b02bc591e0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2577585254963922481, guid: c18ae4d82cd54714cb8967b02bc591e0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9115619047383816688, guid: c18ae4d82cd54714cb8967b02bc591e0, type: 3}
+      propertyPath: _destroyVFX
+      value: 
+      objectReference: {fileID: 1480631332960490905, guid: cbd194bdcf3cb2e48997550337dbde85, type: 3}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c18ae4d82cd54714cb8967b02bc591e0, type: 3}
 --- !u!1001 &117238684
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4432,3 +4509,4 @@ SceneRoots:
   - {fileID: 872934742}
   - {fileID: 199103270}
   - {fileID: 1448705122}
+  - {fileID: 102809261}
