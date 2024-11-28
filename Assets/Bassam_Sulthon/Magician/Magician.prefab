@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8710962689154210645}
   - component: {fileID: 2277094263319004044}
   - component: {fileID: 1855987197888481179}
-  - component: {fileID: 6495857573133021}
   - component: {fileID: 6441958870475684115}
+  - component: {fileID: 4724259611190319415}
   m_Layer: 0
   m_Name: Magician
   m_TagString: Untagged
@@ -105,27 +105,6 @@ MonoBehaviour:
   target: {fileID: 0}
   min_timer: 0.5
   max_timer: 1.5
---- !u!95 &6495857573133021
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1664446495556907990}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: eea25d79b403179449c0c430a08f359d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!70 &6441958870475684115
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -161,3 +140,24 @@ CapsuleCollider2D:
   m_Offset: {x: -0.053241074, y: 0.3270542}
   m_Size: {x: 1.1249665, y: 1.1249665}
   m_Direction: 0
+--- !u!95 &4724259611190319415
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664446495556907990}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: eea25d79b403179449c0c430a08f359d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

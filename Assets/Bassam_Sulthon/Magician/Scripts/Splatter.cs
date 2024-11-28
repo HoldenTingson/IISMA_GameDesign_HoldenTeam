@@ -8,7 +8,7 @@ public class Splatter : E_attack
     private Color initialColor; // Initial color of the sprite
     private float timer; // Tracks time elapsed
 
-    void Start()
+    void Awake()
     {
         damage = 20f;
         spriteRenderer = GetComponent<SpriteRenderer>();

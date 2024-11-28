@@ -11,11 +11,13 @@ public class Lobber : MonoBehaviour
     public float min_timer = 0.5f;
     public float max_timer = 1.5f;
     private Animator animator;
+    private MagicianAI _ai;
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(LobRoutine());
         animator = GetComponent<Animator>();
+        _ai = GetComponent<MagicianAI>();
     }
 
     // Update is called once per frame
@@ -29,9 +31,11 @@ public class Lobber : MonoBehaviour
         {
             yield return new WaitForSeconds(Random.Range(min_timer, max_timer));
             animator.SetBool("Attacking", true);
-            yield return new WaitForSeconds(0.3f);
+            _ai.ChangeState();
+            yield return new WaitForSeconds(0.35f);
             LobEm(); // Call the Shoot function
             animator.SetBool("Attacking", false);
+            _ai.ChangeState();
         }
     }
 

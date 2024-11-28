@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 315399360571817069}
   - component: {fileID: 773984872164117532}
   - component: {fileID: -7824221627818011506}
+  - component: {fileID: 6336145833040873584}
   m_Layer: 0
   m_Name: Lobjectile
   m_TagString: Untagged
@@ -99,3 +100,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   splatter: {fileID: 0}
+--- !u!210 &6336145833040873584
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8447571148861035925}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_SortAtRoot: 0
