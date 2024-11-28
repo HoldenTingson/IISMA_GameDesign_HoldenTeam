@@ -10,10 +10,12 @@ public class Lobber : MonoBehaviour
     public Transform target;
     public float min_timer = 0.5f;
     public float max_timer = 1.5f;
+    private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(LobRoutine());
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -25,8 +27,11 @@ public class Lobber : MonoBehaviour
     {
         while (true) // Keep shooting until stopped
         {
-            yield return new WaitForSeconds(Random.Range(min_timer, max_timer)); // Wait for a random time
+            yield return new WaitForSeconds(Random.Range(min_timer, max_timer));
+            animator.SetBool("Attacking", true);
+            yield return new WaitForSeconds(0.3f);
             LobEm(); // Call the Shoot function
+            animator.SetBool("Attacking", false);
         }
     }
 

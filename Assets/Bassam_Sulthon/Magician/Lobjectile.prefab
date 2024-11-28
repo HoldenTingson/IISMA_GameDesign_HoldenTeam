@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 315399360571817069}
   - component: {fileID: 773984872164117532}
-  - component: {fileID: -5439507683719431089}
+  - component: {fileID: -7824221627818011506}
   m_Layer: 0
-  m_Name: Shade
+  m_Name: Lobjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,8 +74,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.43529412}
+  m_Sprite: {fileID: 21300000, guid: a7a68548b4dc5784cade18a8ca5c2629, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-5439507683719431089
+--- !u!114 &-7824221627818011506
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,7 +94,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8447571148861035925}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b5aaad4395ce184e9bb5966d3c6b698, type: 3}
+  m_Script: {fileID: 11500000, guid: fa7c48c6e2470f24bbf0af442dc15c6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  splatter: {fileID: 0}
