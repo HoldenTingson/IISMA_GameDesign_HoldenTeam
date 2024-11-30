@@ -10,7 +10,7 @@ public class PickupSpawner : MonoBehaviour
     {
         int randomNum = Random.Range(1, 5);
 
-        if (randomNum == 1)
+        if (randomNum == 3)
         {
             Instantiate(_healthGlobe, transform.position, Quaternion.identity);
         }

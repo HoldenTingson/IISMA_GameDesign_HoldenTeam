@@ -67,9 +67,32 @@ public class Sword : MonoBehaviour, IWeapon
         }
     }
 
+    public void SwingLeftFlipAnimEvent()
+    {
+        var verticalInput = Input.GetAxis("Vertical");
+        _slashAnim.gameObject.transform.rotation = Quaternion.Euler(-180, 0, 0);
+
+        if (verticalInput < 0)
+        {
+            _slashAnim.GetComponent<SpriteRenderer>().flipY = true;
+        }
+    }
+
+    public void SwingRightFlipAnimEvent()
+    {
+        var verticalInput = Input.GetAxis("Vertical");
+        _slashAnim.gameObject.transform.rotation = Quaternion.Euler(-180, 0, 0);
+
+        if (verticalInput < 0)
+        {
+            _slashAnim.GetComponent<SpriteRenderer>().flipY = true;
+        }
+    }
+
     private void FollowPlayerDirection()
     {
         var horizontalInput = Input.GetAxis("Horizontal");
+        var vercticalInput = Input.GetAxis("Vertical");
 
         if (horizontalInput < 0)
         {
@@ -81,6 +104,16 @@ public class Sword : MonoBehaviour, IWeapon
             ActiveWeapon.Instance.transform.rotation = Quaternion.Euler(0, 0, 0);
             _weaponCollider.transform.rotation = Quaternion.Euler(0, 0, 0);
 
+        }
+        else if (vercticalInput < 0)
+        {
+            ActiveWeapon.Instance.transform.rotation = Quaternion.Euler(0, -90, 0);
+            _weaponCollider.transform.rotation = Quaternion.Euler(0, -90, 0);
+        }
+        else if (vercticalInput > 0)
+        {
+            ActiveWeapon.Instance.transform.rotation = Quaternion.Euler(0, 0, 0);
+            _weaponCollider.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
     }
 }
