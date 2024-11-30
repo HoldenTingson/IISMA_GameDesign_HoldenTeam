@@ -2,25 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActiveInventory : MonoBehaviour
+public class ActiveInventory : Singleton<ActiveInventory>
 {
     private int _activeSlotIndexNum = 0;
     private PlayerControls _playerControls;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         _playerControls = new PlayerControls();
     }
 
     private void Start()
     {
         _playerControls.Inventory.Keyboard.performed += ctx => ToggleActiveSlot((int)ctx.ReadValue<float>());
-        ToggleActiveSlot(1);
     }
 
     private void OnEnable()
     {
         _playerControls.Enable();
+    }
+
+    public void EquipStartingWeapon()
+    {
+        ToggleActiveSlot(1);
     }
 
     private void ToggleActiveSlot(int indexNum)
@@ -53,11 +58,12 @@ public class ActiveInventory : MonoBehaviour
         GameObject weaponToSpawn = transform.GetChild(_activeSlotIndexNum).GetComponentInChildren<InventorySlot>()
             .GetWeaponInfo().weaponPrefab;
 
-        GameObject newWeapon =
-            Instantiate(weaponToSpawn, ActiveWeapon.Instance.transform.position, Quaternion.identity);
 
-        ActiveWeapon.Instance.transform.rotation = Quaternion.Euler(0, 0, 0);
-        newWeapon.transform.parent = ActiveWeapon.Instance.transform;
+        GameObject newWeapon =
+            Instantiate(weaponToSpawn, ActiveWeapon.Instance.transform);
+
+        //ActiveWeapon.Instance.transform.rotation = Quaternion.Euler(0, 0, 0);
+        //newWeapon.transform.parent = ActiveWeapon.Instance.transform;
 
         ActiveWeapon.Instance.NewWeapon(newWeapon.GetComponent<MonoBehaviour>());
     }
