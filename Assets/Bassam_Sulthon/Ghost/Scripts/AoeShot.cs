@@ -9,6 +9,9 @@ public class AoeShot : MonoBehaviour
     public float angleOffset = 0f;     // Offset angle in degrees, if needed
     public float min_timer = 1f;
     public float max_timer = 3f;
+    private SpriteRenderer sr;
+    private int windup = 0;
+    private MagicianAI _ai;
     private Vector2[] directions = new Vector2[]
     {
         new Vector2(0, 1),   // Up
@@ -48,12 +51,22 @@ public class AoeShot : MonoBehaviour
     };
     void Start()
     {
+        sr = GetComponent<SpriteRenderer>();
+        _ai = GetComponent<MagicianAI>();
         StartCoroutine(ShootRoutine());
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        if (windup > 0)
+        {
+            windup--;
+            sr.color = new Color(sr.color.r, sr.color.g -0.1f, sr.color.b -0.1f, 1f);
+        }
+        else
+        {
+            sr.color = new Color(1f, 1f, 1f, 1f);
+        }
     }
     
     IEnumerator ShootRoutine()
@@ -61,6 +74,10 @@ public class AoeShot : MonoBehaviour
         while (true) // Keep shooting until stopped
         {
             yield return new WaitForSeconds(Random.Range(min_timer, max_timer)); // Wait for a random time
+            _ai.ChangeState();
+            windup = Mathf.CeilToInt(1f / Time.fixedDeltaTime); 
+            yield return new WaitForSeconds(1f);
+            _ai.ChangeState();
             Shoot(); // Call the Shoot function
         }
     }

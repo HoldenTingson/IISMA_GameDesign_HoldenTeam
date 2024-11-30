@@ -10,7 +10,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1843909540886920682}
   - component: {fileID: 4395152680674176753}
+  - component: {fileID: 8835166521110600780}
   - component: {fileID: 3965258303997996428}
+  - component: {fileID: -1494468612022453169}
+  - component: {fileID: 4727441707580123140}
+  - component: {fileID: 10176508980888015}
+  - component: {fileID: 4226101570421916260}
+  - component: {fileID: 7531984328374766961}
+  - component: {fileID: 2394834315656471678}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Untagged
@@ -85,6 +92,33 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &8835166521110600780
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8209607832870277783}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!114 &3965258303997996428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,3 +136,92 @@ MonoBehaviour:
   angleOffset: 0
   min_timer: 1
   max_timer: 3
+--- !u!95 &-1494468612022453169
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8209607832870277783}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 707b5c1f55fa6f14aba091c7fefdb4f2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4727441707580123140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8209607832870277783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2946b8a6af0eb74d8f195a49e2dd35c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _roamChangeDirFloat: 2
+--- !u!114 &10176508980888015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8209607832870277783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 775704242090c5b4d8b0668d84cdefa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moveSpeed: 2
+--- !u!114 &4226101570421916260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8209607832870277783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 750895fb6dd26bc44872f26a03124e19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startingHealth: 3
+  _deathVfxPrefab: {fileID: 0}
+  _knockBackThrust: 0
+--- !u!114 &7531984328374766961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8209607832870277783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd8eae858eec5a6468ce9b9b54d55f57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _whiteFlashMat: {fileID: 0}
+  _restoreDefaultMatTime: 0.2
+--- !u!114 &2394834315656471678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8209607832870277783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae97ad90b2906f1489e74a4f9e88300e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _knockBackTime: 0.2

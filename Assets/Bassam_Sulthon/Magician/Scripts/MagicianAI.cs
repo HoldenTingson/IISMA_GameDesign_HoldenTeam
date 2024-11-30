@@ -12,11 +12,11 @@ public class MagicianAI : MonoBehaviour
     }
 
     private State _state;
-    private EnemyPathFinding _enemyPathfinding;
+    private MagicianPathFinding _enemyPathfinding;
 
     private void Awake()
     {
-        _enemyPathfinding = GetComponent<EnemyPathFinding>();
+        _enemyPathfinding = GetComponent<MagicianPathFinding>();
         _state = State.Roaming;
     }
 
@@ -33,11 +33,6 @@ public class MagicianAI : MonoBehaviour
             _enemyPathfinding.MoveTo(roamPosition);
             yield return new WaitForSeconds(_roamChangeDirFloat);
         }
-
-        while (_state == State.Stop)
-        {
-            yield return new WaitForSeconds(0.35f);
-        }
     }
 
     private Vector2 GetRoamingPosition()
@@ -48,6 +43,6 @@ public class MagicianAI : MonoBehaviour
     public void ChangeState()
     {
         _state = (_state == State.Roaming) ? State.Stop : State.Roaming;
-        Debug.Log("State Changed");
+        _enemyPathfinding.attackChange();
     }
 }
