@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections;
 using UnityEngine;
 
 public class PlayerController : Singleton<PlayerController>
@@ -11,6 +12,9 @@ public class PlayerController : Singleton<PlayerController>
 
     private PlayerControls _playerControls;
     private Vector2 _movement;
+    private bool _moving;
+    private float _moveX;
+    private float _moveY;
     private Rigidbody2D _rb;
     private Animator _myAnimator;
     private SpriteRenderer _mySpriteRenderer;
@@ -44,6 +48,7 @@ public class PlayerController : Singleton<PlayerController>
     private void Update()
     {
         PlayerInput();
+        Animate();
     }
 
     private void FixedUpdate()
@@ -57,11 +62,32 @@ public class PlayerController : Singleton<PlayerController>
         return _weaponCollider;
     }
 
+    private void Animate()
+    {
+        if (_movement.magnitude > 0.1f || _movement.magnitude < -0.1f)
+        {
+            _moving = true;
+        }
+        else
+        {
+            _moving = false;
+        }
+
+        if (_moving)
+        {
+            _myAnimator.SetFloat("moveX", _moveX);
+            _myAnimator.SetFloat("moveY", _moveY);
+        }
+
+        _myAnimator.SetBool("Moving", _moving);
+    }
+
     private void PlayerInput()
     {
-        _movement = _playerControls.Movement.Move.ReadValue<Vector2>();
-        _myAnimator.SetFloat("moveX", _movement.x);
-        _myAnimator.SetFloat("moveY", _movement.y);
+        _moveX = Input.GetAxisRaw("Horizontal");
+        _moveY = Input.GetAxisRaw("Vertical");
+
+        _movement = new Vector2(_moveX, _moveY).normalized;
 
     }
 
@@ -93,8 +119,9 @@ public class PlayerController : Singleton<PlayerController>
 
     private void Dash()
     {
-        if (!_isDashing)
+        if (!_isDashing && Stamina.Instance.CurrentStamina > 0)
         {
+            Stamina.Instance.UseStamina();
             _isDashing = true;
             _moveSpeed *= _dashSpeed;
             _myTrailRenderer.emitting = true;
