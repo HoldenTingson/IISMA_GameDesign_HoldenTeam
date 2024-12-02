@@ -53464,7 +53464,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 789084338}
-  - component: {fileID: 789084339}
   m_Layer: 0
   m_Name: LEVEL
   m_TagString: Untagged
@@ -53488,18 +53487,6 @@ Transform:
   - {fileID: 1648216982}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!210 &789084339
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 789084337}
-  m_Enabled: 1
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_SortAtRoot: 0
 --- !u!1001 &808012800
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53673,12 +53660,12 @@ GameObject:
   m_Component:
   - component: {fileID: 871098694}
   - component: {fileID: 871098693}
+  - component: {fileID: 871098699}
   - component: {fileID: 871098692}
   - component: {fileID: 871098695}
   - component: {fileID: 871098696}
   - component: {fileID: 871098697}
   - component: {fileID: 871098698}
-  - component: {fileID: 871098699}
   - component: {fileID: 871098701}
   - component: {fileID: 871098700}
   - component: {fileID: 871098702}
@@ -53757,7 +53744,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1240032861
   m_SortingLayer: 1
-  m_SortingOrder: 1
+  m_SortingOrder: 11
   m_Sprite: {fileID: 797262693, guid: 306428d2dab64a143b8adb2d5e6fb343, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -53881,9 +53868,9 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 871098691}
   m_Enabled: 1
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1240032861
+  m_SortingLayer: 1
+  m_SortingOrder: 11
   m_SortAtRoot: 0
 --- !u!114 &871098700
 MonoBehaviour:
@@ -53951,6 +53938,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 872934742}
+  - component: {fileID: 872934743}
   m_Layer: 0
   m_Name: Enemies
   m_TagString: Untagged
@@ -53983,6 +53971,18 @@ Transform:
   - {fileID: 2134402653}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!210 &872934743
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872934741}
+  m_Enabled: 1
+  m_SortingLayerID: -1240032861
+  m_SortingLayer: 1
+  m_SortingOrder: 11
+  m_SortAtRoot: 0
 --- !u!1 &883658531
 GameObject:
   m_ObjectHideFlags: 0
