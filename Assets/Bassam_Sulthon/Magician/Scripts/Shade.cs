@@ -11,7 +11,7 @@ public class Shade : MonoBehaviour
     private Vector3 speed; // Movement speed
     private float counter; // Tracks progress
 
-    void Start()
+    void Awake()
     {
         from = transform.position;
         to = target.position;

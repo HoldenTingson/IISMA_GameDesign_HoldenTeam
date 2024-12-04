@@ -2,19 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Lobber : MonoBehaviour
+public class Magician : MonoBehaviour
 {
     public GameObject shadow;
     public GameObject projectile;
     public GameObject splatter;
-    public Transform target;
+    private GameObject target;
     public float min_timer = 0.5f;
     public float max_timer = 1.5f;
     private Animator animator;
     private MagicianAI _ai;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        target = GameObject.FindGameObjectWithTag("player");
         StartCoroutine(LobRoutine());
         animator = GetComponent<Animator>();
         _ai = GetComponent<MagicianAI>();
@@ -41,13 +42,13 @@ public class Lobber : MonoBehaviour
 
     void LobEm()
     {
+        Shade shadey = shadow.GetComponent<Shade>();
+        shadey.target = target.transform;
         GameObject shade = Instantiate(shadow, transform.position, transform.rotation);
-        Shade shadey = shade.AddComponent<Shade>();
-        shadey.target = target;
         
-        GameObject proj = Instantiate(projectile, transform.position, transform.rotation);
-        CurvedProjectile curvy = proj.AddComponent<CurvedProjectile>();
+        CurvedProjectile curvy = projectile.GetComponent<CurvedProjectile>();
         curvy.target = shadey.target;
         curvy.splatter = splatter;
+        GameObject proj = Instantiate(projectile, transform.position, transform.rotation);
     }
 }
