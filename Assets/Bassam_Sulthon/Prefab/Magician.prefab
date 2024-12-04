@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8710962689154210645}
   - component: {fileID: 2277094263319004044}
-  - component: {fileID: 1855987197888481179}
   - component: {fileID: 3400818508650926365}
   - component: {fileID: 6441958870475684115}
   - component: {fileID: 4724259611190319415}
@@ -19,6 +18,7 @@ GameObject:
   - component: {fileID: 9038691553158349664}
   - component: {fileID: 4173837295746693464}
   - component: {fileID: 1278747854679416818}
+  - component: {fileID: 7907301127492221353}
   m_Layer: 0
   m_Name: Magician
   m_TagString: Untagged
@@ -93,24 +93,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!114 &1855987197888481179
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1664446495556907990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 788b50f6de69cc34eb6504e305e6d576, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shadow: {fileID: 8447571148861035925, guid: d1fd7ea72cb979e40b9562ba8ce35441, type: 3}
-  projectile: {fileID: 8447571148861035925, guid: dda541e2980a60f409d9c0511827a52f, type: 3}
-  splatter: {fileID: 9069805408645550077, guid: 281b58c3943190f43938b2d8eb2a5d5c, type: 3}
-  target: {fileID: 0}
-  min_timer: 0.5
-  max_timer: 1.5
 --- !u!50 &3400818508650926365
 Rigidbody2D:
   serializedVersion: 4
@@ -262,3 +244,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _whiteFlashMat: {fileID: 0}
   _restoreDefaultMatTime: 0.2
+--- !u!114 &7907301127492221353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664446495556907990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 788b50f6de69cc34eb6504e305e6d576, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shadow: {fileID: 8447571148861035925, guid: d1fd7ea72cb979e40b9562ba8ce35441, type: 3}
+  projectile: {fileID: 8447571148861035925, guid: dda541e2980a60f409d9c0511827a52f, type: 3}
+  splatter: {fileID: 9069805408645550077, guid: 281b58c3943190f43938b2d8eb2a5d5c, type: 3}
+  target: {fileID: 0}
+  min_timer: 0.5
+  max_timer: 1.5
