@@ -4,34 +4,58 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    private static EnemyManager _instance;
+    public static EnemyManager Instance;
+    private List<GameObject> enemies;
 
-    public static EnemyManager Instance
+    private void Awake()
     {
-        get
+        if (Instance == null)
         {
-            if (_instance == null)
-            {
-                _instance = FindObjectOfType<EnemyManager>();
-            }
-            return _instance;
+            Instance = this;
+        }
+        enemies = new List<GameObject>();
+    }
+
+    private void Start()
+    {
+        UpdateEnemyList();
+    }
+
+    public void UpdateEnemyList()
+    {
+        enemies.Clear();
+        GameObject[] enemyObjects = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemyObjects)
+        {
+            enemies.Add(enemy);
         }
     }
 
-    private int enemyCount;
-
-    void Start()
+    public void RegisterEnemy(GameObject enemy)
     {
-        enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        if (!enemies.Contains(enemy))
+        {
+            enemies.Add(enemy);
+        }
     }
 
-    public void EnemyKilled()
+    public void UnregisterEnemy(GameObject enemy)
     {
-        enemyCount--;
+        if (enemies.Contains(enemy))
+        {
+            enemies.Remove(enemy);
+        }
     }
 
     public int GetEnemyCount()
     {
-        return enemyCount;
+        return enemies.Count;
+    }
+
+    // Fungsi untuk memeriksa apakah semua musuh sudah mati
+    public bool AllEnemiesDefeated()
+    {
+        UpdateEnemyList();
+        return enemies.Count == 0;
     }
 }

@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class ChestInteraction : MonoBehaviour
 {
     [SerializeField] private Dialogue dialogue; // Reference to the Dialogue script
