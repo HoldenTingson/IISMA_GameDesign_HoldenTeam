@@ -8,6 +8,10 @@ public class Pickup : MonoBehaviour
     {
         StaminaGlobe,
         HealthGlobe,
+        DashAbility,
+        BowItem,
+        StaffItem,
+
     }
 
     [SerializeField] private PickUpType _pickUpType;
@@ -36,6 +40,15 @@ public class Pickup : MonoBehaviour
                 break;
             case PickUpType.StaminaGlobe:
                 Stamina.Instance.RefreshStamina();
+                break;
+            case PickUpType.DashAbility:
+                PlayerController.Instance.UnlockDashAbility();
+                break;
+            case PickUpType.BowItem:
+                ActiveInventory.Instance.AddWeapon("Bow");
+                break;
+            case PickUpType.StaffItem:
+                ActiveInventory.Instance.AddWeapon("Staff");
                 break;
         }
     }

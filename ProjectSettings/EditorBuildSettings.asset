@@ -6,15 +6,19 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Tingson_Holden/Scenes/SampleScene.unity
+    path: Assets/Tingson_Holden/Scenes/Level 1.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
+  - enabled: 0
     path: Assets/Ariotedjo_Muhammad/Scene/SampleScene1.unity
-    guid: 725b5f487555f0641be02a14e1efae9c
+    guid: e968ddc1a06a85d4984123b57073bf7a
   - enabled: 0
     path: Assets/Ariotedjo_Muhammad/Scene/SampleScene2.unity
     guid: 9657b90b0c099634186b8c8b062dabc5
-  - enabled: 1
+  - enabled: 0
     path: Assets/Tingson_Holden/Scenes/SampleScene4.unity
     guid: 56d241c06fe0eca46b3ddc79fee6cd39
-  m_configObjects: {}
+  - enabled: 1
+    path: Assets/Tingson_Holden/Scenes/Level 2.unity
+    guid: 777df5d10e5c47e45b3af9c239077877
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 86c6e8ecf70aa484fb6a3a66bb1af08a, type: 2}

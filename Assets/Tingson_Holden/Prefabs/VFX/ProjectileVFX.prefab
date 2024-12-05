@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3608931098888183773}
   - component: {fileID: 827420523034913744}
   - component: {fileID: 4380712904114807166}
+  - component: {fileID: -1456544584136335309}
   m_Layer: 0
   m_Name: ProjectileVFX
   m_TagString: Untagged
@@ -4901,3 +4902,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a49bfbb6fc8d26e4ab458b2d5f803f9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!210 &-1456544584136335309
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2284033693174351575}
+  m_Enabled: 1
+  m_SortingLayerID: -1240032861
+  m_SortingLayer: 1
+  m_SortingOrder: 11
+  m_SortAtRoot: 0

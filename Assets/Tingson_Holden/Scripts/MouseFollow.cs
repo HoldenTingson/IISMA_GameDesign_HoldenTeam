@@ -7,11 +7,13 @@ public class MouseFollow : MonoBehaviour
 {
     private void Update()
     {
-        if (!ActiveWeapon.Instance.CurrentActiveWeapon.name.Contains("Sword"))
+        if (ActiveWeapon.Instance.CurrentActiveWeapon == null || ActiveWeapon.Instance.CurrentActiveWeapon.name.Contains("Sword"))
         {
-            FaceMouse();
+            return;
         }
-}
+
+        FaceMouse();
+    }
 
     private void FaceMouse()
     { 
