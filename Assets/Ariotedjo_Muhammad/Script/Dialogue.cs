@@ -20,7 +20,7 @@ public class Dialogue : MonoBehaviour
 
     void Update()
     {
-        if (isDialogueActive && Input.GetMouseButtonDown(0))
+        if (isDialogueActive && (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Return)))
         {
             if (textComponent.text == lines[index])
             {
@@ -68,6 +68,6 @@ public class Dialogue : MonoBehaviour
     void EndDialogue()
     {
         isDialogueActive = false;
-        gameObject.SetActive(false); // Hide the dialogue box
+        gameObject.SetActive(false); // Hide the dialogue box
     }
 }
