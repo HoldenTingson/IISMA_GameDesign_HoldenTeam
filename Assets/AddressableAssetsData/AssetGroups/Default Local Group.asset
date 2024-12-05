@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 3aa90adbc3cd2e5448633843f520589f
+  m_SerializeEntries:
+  - m_GUID: 1c3f089281da42e41a920333445d034f
+    m_Address: Assets/Tingson_Holden/Sprites/UI/Sword.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1d816faed4a0f254bbb1dbffeebf64f5
+    m_Address: Assets/Tingson_Holden/Sprites/UI/Bow.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2e1deb4592d90ad4a99d231fac52cda7
+    m_Address: Assets/Tingson_Holden/ScriptableObjects/Staff.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 769c960248f60c54fb809456baba0099
+    m_Address: Assets/Tingson_Holden/ScriptableObjects/Bow.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7c78a71977e726442ba7d40c1a61de52
+    m_Address: Assets/Tingson_Holden/Sprites/UI/Staff.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d2dab7c7c28c1834cb1dbffae0b63e2b
+    m_Address: Assets/Tingson_Holden/ScriptableObjects/Sword.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: fb684ed6b8d8991449c2fab6b38635e4, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 4854f1c47ed7e8248bd416efba6336e5, type: 2}
+    - {fileID: 11400000, guid: c28f196c87949d044a5e9e7bd2f6541b, type: 2}

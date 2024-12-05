@@ -19,7 +19,7 @@ public class PlayerHealth : Singleton<PlayerHealth>
     private KnockBack _knockBack;
     private Flash _flash;
 
-    private const string FIRST_STAGE = "SampleScene";
+    private const string FIRST_STAGE = "Level 1";
     private readonly int DEATH_HASH = Animator.StringToHash("Death");
 
     protected override void Awake()

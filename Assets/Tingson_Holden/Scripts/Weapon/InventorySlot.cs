@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class InventorySlot : MonoBehaviour
 {
-    [SerializeField] private WeaponInfo _weaponInfo;
+    public WeaponInfo _weaponInfo;
 
     public WeaponInfo GetWeaponInfo()
     {
         return _weaponInfo;
+    }
+
+    public void SetWeaponInfo(WeaponInfo newWeaponInfo)
+    {
+        _weaponInfo = newWeaponInfo;
     }
 }

@@ -22,6 +22,7 @@ public class PlayerController : Singleton<PlayerController>
     private KnockBack _knockBack;
     private bool _facingLeft = false;
     private bool _isDashing = false;
+    private bool _unlockDash = false;
     public bool FacingLeft { get { return _facingLeft; } }
 
     protected override void Awake()
@@ -124,9 +125,14 @@ public class PlayerController : Singleton<PlayerController>
         }
     }
 
+    public void UnlockDashAbility()
+    {
+        _unlockDash = true;
+    }
+
     private void Dash()
     {
-        if (!_isDashing && Stamina.Instance.CurrentStamina > 0)
+        if (!_isDashing && Stamina.Instance.CurrentStamina > 0 && _unlockDash)
         {
             Stamina.Instance.UseStamina();
             _isDashing = true;
