@@ -9,11 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4366897086301613780}
-  - component: {fileID: 3883292058462364138}
   - component: {fileID: -242340636571146500}
-  - component: {fileID: 3777886393834666789}
   m_Layer: 0
-  m_Name: Bow
+  m_Name: BowItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,21 +33,6 @@ Transform:
   - {fileID: 2314112584165071621}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3883292058462364138
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 899831587480174285}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e0f47709dc0d114585b14ac2065a197, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _weaponInfo: {fileID: 11400000, guid: 769c960248f60c54fb809456baba0099, type: 2}
-  _arrowPrefab: {fileID: 1253597392238208545, guid: 1023ada4a6704724893b8fafdbbaa7ce, type: 3}
-  _arrowSpawnPoint: {fileID: 2314112584165071621}
 --- !u!212 &-242340636571146500
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -102,27 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &3777886393834666789
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 899831587480174285}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c244999f79dfa3244889c7baa02434c4, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2396912300114529189
 GameObject:
   m_ObjectHideFlags: 0

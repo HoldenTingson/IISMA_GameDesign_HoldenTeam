@@ -20,7 +20,7 @@ public class Dialogue : MonoBehaviour
 
     void Update()
     {
-        if (isDialogueActive && Input.GetMouseButtonDown(0))
+        if (isDialogueActive && (Input.GetMouseButtonDown(0) ||  Input.GetKeyDown(KeyCode.Return)))
         {
             if (textComponent.text == lines[index])
             {
