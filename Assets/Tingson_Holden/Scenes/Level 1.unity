@@ -53359,7 +53359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e7901aad3bf7a8408ee4063baa3e2fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 3
+  _moveSpeed: 13
   _dashSpeed: 8
   _myTrailRenderer: {fileID: 689872160}
   _weaponCollider: {fileID: 1682530162}
@@ -80209,7 +80209,7 @@ Transform:
   m_GameObject: {fileID: 1035661845791658990}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9, y: 0.81, z: 0}
+  m_LocalPosition: {x: 55.7, y: -0.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
