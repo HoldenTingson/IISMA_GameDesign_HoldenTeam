@@ -4,34 +4,67 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    private static EnemyManager _instance;
+    public static EnemyManager Instance;
+    private List<GameObject> enemies;
 
-    public static EnemyManager Instance
+    private void Awake()
     {
-        get
+        if (Instance == null)
         {
-            if (_instance == null)
+            Instance = this;
+        }
+        enemies = new List<GameObject>();
+    }
+
+    private void Start()
+    {
+        UpdateEnemyList();
+    }
+
+    public void UpdateEnemyList()
+    {
+        enemies.Clear(); // Clear the current list to avoid duplicates
+        GameObject[] enemyObjects = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemyObjects)
+        {
+            if (enemy.activeInHierarchy) // Only consider active enemies
             {
-                _instance = FindObjectOfType<EnemyManager>();
+                enemies.Add(enemy);
             }
-            return _instance;
         }
     }
 
-    private int enemyCount;
-
-    void Start()
+    public void RegisterEnemy(GameObject enemy)
     {
-        enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        if (!enemies.Contains(enemy))
+        {
+            enemies.Add(enemy);
+        }
     }
 
-    public void EnemyKilled()
+    public void UnregisterEnemy(GameObject enemy)
     {
-        enemyCount--;
+        if (enemies.Contains(enemy))
+        {
+            enemies.Remove(enemy);
+        }
     }
 
     public int GetEnemyCount()
     {
-        return enemyCount;
+        return enemies.Count;
+    }
+
+    // Check if all enemies are defeated
+    public bool AllEnemiesDefeated()
+    {
+        UpdateEnemyList();
+        return enemies.Count == 0;
+    }
+
+    // Debug: Log the current enemy count
+    private void Update()
+    {
+        Debug.Log($"Current enemy count: {GetEnemyCount()}");
     }
 }
