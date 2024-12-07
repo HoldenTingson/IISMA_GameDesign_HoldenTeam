@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -11,6 +10,7 @@ public class Dialogue : MonoBehaviour
 
     private int index;
     private bool isDialogueActive = false;
+    private System.Action onDialogueComplete; // Callback for when dialogue ends
 
     void Start()
     {
@@ -20,6 +20,7 @@ public class Dialogue : MonoBehaviour
 
     void Update()
     {
+        // Player can use mouse or Enter to proceed
         if (isDialogueActive && (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Return)))
         {
             if (textComponent.text == lines[index])
@@ -29,29 +30,41 @@ public class Dialogue : MonoBehaviour
             else
             {
                 StopAllCoroutines();
-                textComponent.text = lines[index];
+                textComponent.text = lines[index]; // Show full line immediately if the player clicks before it's finished
             }
         }
     }
 
-    public void StartDialogue()
+    /// <summary>
+    /// Starts the dialogue and pauses the game.
+    /// </summary>
+    /// <param name="callback">Optional callback to invoke after dialogue ends</param>
+    public void StartDialogue(System.Action callback = null)
     {
+        // Reset everything before starting the dialogue
+        ResetDialogue();
+
         index = 0;
         isDialogueActive = true;
+        Time.timeScale = 0f; // Pause the game
         gameObject.SetActive(true); // Show the dialogue box
+        onDialogueComplete = callback; // Assign callback if provided
         StartCoroutine(TypeLine());
     }
 
-    IEnumerator TypeLine()
+    private IEnumerator TypeLine()
     {
+        // Reset the text to empty each time a new line starts
+        textComponent.text = string.Empty;
+
         foreach (char c in lines[index].ToCharArray())
         {
             textComponent.text += c;
-            yield return new WaitForSeconds(textSpeed);
+            yield return new WaitForSecondsRealtime(textSpeed); // Use WaitForSecondsRealtime during pause
         }
     }
 
-    void NextLine()
+    private void NextLine()
     {
         if (index < lines.Length - 1)
         {
@@ -65,9 +78,20 @@ public class Dialogue : MonoBehaviour
         }
     }
 
-    void EndDialogue()
+    private void EndDialogue()
     {
         isDialogueActive = false;
-        gameObject.SetActive(false); // Hide the dialogue box
+        Time.timeScale = 1f; // Resume the game
+        gameObject.SetActive(false); // Hide the dialogue box
+        onDialogueComplete?.Invoke(); // Invoke the callback if assigned
+    }
+
+    // Reset all necessary fields to ensure dialogue restarts properly
+    public void ResetDialogue()
+    {
+        // Reset the index and the text box
+        index = 0;
+        textComponent.text = string.Empty; // Clear any leftover text
+        isDialogueActive = false; // Set status as inactive
     }
 }

@@ -15,28 +15,34 @@ public class AreaExit : MonoBehaviour
         // Pastikan player yang memasuki trigger
         if (other.gameObject.GetComponent<PlayerController>())
         {
-            // Cek apakah musuh sudah dikalahkan
+            // Cek apakah musuh masih ada
             if (EnemyManager.Instance.GetEnemyCount() > 0)
             {
-                // Jika masih ada musuh, tampilkan dialog
-                dialogue.StartDialogue();
+                dialogue.StartDialogue(PauseGameAndDisplay("There are still enemies. Defeat them to proceed."));
                 Debug.Log("There are still enemies. Defeat them to proceed.");
             }
             else if (chestObject != null)
             {
-                // Cek apakah chest sudah dihancurkan (misal dengan mengecek apakah chestObject sudah tidak aktif)
+                // Cek apakah chest sudah dihancurkan
                 if (!chestObject.activeInHierarchy)
                 {
-                    Debug.Log("Chest is destroyed. Proceeding to next scene...");// Jika semua musuh sudah dikalahkan, lakukan transisi scene
+                    Debug.Log("Chest is destroyed. Proceeding to next scene...");
                     SceneManagement.Instance.SetTransitionName(sceneTransitionName);
                     UIFade.Instance.FadeToBlack();
                     StartCoroutine(LoadSceneRoutine());
                 }
                 else
                 {
-                    dialogue.StartDialogue();
+                    dialogue.StartDialogue(PauseGameAndDisplay("You must destroy the chest before proceeding."));
                     Debug.Log("You must destroy the chest before proceeding.");
                 }
+            }
+            else
+            {
+                Debug.Log("All conditions met. Proceeding to the next scene...");
+                SceneManagement.Instance.SetTransitionName(sceneTransitionName);
+                UIFade.Instance.FadeToBlack();
+                StartCoroutine(LoadSceneRoutine());
             }
         }
     }
@@ -44,7 +50,7 @@ public class AreaExit : MonoBehaviour
     private IEnumerator LoadSceneRoutine()
     {
         // Tunggu sebentar untuk transisi fade
-        while (waitToLoadTime >= 0)
+        while (waitToLoadTime > 0)
         {
             waitToLoadTime -= Time.deltaTime;
             yield return null;
@@ -54,4 +60,12 @@ public class AreaExit : MonoBehaviour
         SceneManager.LoadScene(sceneToLoad);
     }
 
+    private System.Action PauseGameAndDisplay(string message)
+    {
+        return () =>
+        {
+            Debug.Log(message);
+            Time.timeScale = 1f; // Resume time after dialog finishes
+        };
+    }
 }
