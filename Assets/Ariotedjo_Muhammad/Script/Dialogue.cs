@@ -12,6 +12,7 @@ public class Dialogue : MonoBehaviour
     private bool isDialogueActive = false;
     private System.Action onDialogueComplete; // Callback for when dialogue ends
 
+
     void Start()
     {
         textComponent.text = string.Empty;
@@ -47,6 +48,8 @@ public class Dialogue : MonoBehaviour
         onDialogueComplete = callback; // Assign callback if provided
 
         DisablePlayerControls();
+        PlayerController.Instance.canAttack = false;
+        ActiveInventory.Instance.canToggle = false;
         StartCoroutine(TypeLine());
     }
 
@@ -74,13 +77,14 @@ public class Dialogue : MonoBehaviour
             EndDialogue();
         }
     }
+
     private void DisablePlayerControls()
     {
         // Find the PlayerController component and disable it
         PlayerController playerController = FindObjectOfType<PlayerController>();
         if (playerController != null)
         {
-            playerController.enabled = false;  // Disable player movement and attack
+            playerController.enabled = false;  // Disable player movement
         }
     }
 
@@ -90,7 +94,7 @@ public class Dialogue : MonoBehaviour
         PlayerController playerController = FindObjectOfType<PlayerController>();
         if (playerController != null)
         {
-            playerController.enabled = true;  // Enable player movement and attack
+            playerController.enabled = true;  // Enable player movement
         }
     }
 
@@ -101,6 +105,8 @@ public class Dialogue : MonoBehaviour
         gameObject.SetActive(false); // Hide the dialogue box
         onDialogueComplete?.Invoke(); // Invoke the callback if assigned
         EnablePlayerControls();
+        PlayerController.Instance.canAttack = true;
+        ActiveInventory.Instance.canToggle = true;
     }
 
     public void ResetDialogue()

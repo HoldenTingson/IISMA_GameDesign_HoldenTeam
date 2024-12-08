@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class ActiveInventory : Singleton<ActiveInventory>
 {
+    public bool canToggle = true;
     private int _activeSlotIndexNum = 0;
     private PlayerControls _playerControls;
     private Dictionary<string, WeaponInfo> preloadedWeapons = new Dictionary<string, WeaponInfo>();
@@ -43,6 +44,7 @@ public class ActiveInventory : Singleton<ActiveInventory>
     public void EquipStartingWeapon()
     {
         ToggleActiveSlot(1);
+  
     }
 
     public void RestartWeapon()
@@ -69,24 +71,21 @@ public class ActiveInventory : Singleton<ActiveInventory>
 
     private void ToggleActiveSlot(int indexNum)
     {
-        _activeSlotIndexNum = indexNum - 1;
+            _activeSlotIndexNum = indexNum - 1;
 
-        InventorySlot selectedSlot = transform.GetChild(_activeSlotIndexNum).GetComponentInChildren<InventorySlot>();
-        if (selectedSlot != null && selectedSlot.GetWeaponInfo() != null)
-        {
-            foreach (Transform inventorySlot in transform)
+            InventorySlot selectedSlot =
+                transform.GetChild(_activeSlotIndexNum).GetComponentInChildren<InventorySlot>();
+            if (selectedSlot != null && selectedSlot.GetWeaponInfo() != null && canToggle)
             {
-                inventorySlot.GetChild(0).gameObject.SetActive(false);
+                foreach (Transform inventorySlot in transform)
+                {
+                    inventorySlot.GetChild(0).gameObject.SetActive(false);
+                }
+
+                this.transform.GetChild(indexNum - 1).GetChild(0).gameObject.SetActive(true);
+
+                ChangeActiveWeapon();
             }
-
-            this.transform.GetChild(indexNum - 1).GetChild(0).gameObject.SetActive(true);
-
-            ChangeActiveWeapon();
-        }
-        else
-        {
-            Debug.LogWarning("Cannot toggle the slot. No weapon assigned.");
-        }
     }
 
 
