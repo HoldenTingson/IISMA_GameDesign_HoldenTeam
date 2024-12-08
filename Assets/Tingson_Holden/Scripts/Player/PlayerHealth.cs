@@ -89,18 +89,15 @@ public class PlayerHealth : Singleton<PlayerHealth>
         if (_currentHealth > 0 || isDead) return;
 
         isDead = true;
+
+        isDeadFinal = SceneManagement.Instance.GetCurrentSceneName() == FINAL_STAGE;
         _currentHealth = 0;
         Destroy(ActiveWeapon.Instance?.gameObject);
         GetComponent<Animator>().SetTrigger(DEATH_HASH);
 
-        if (!isDeadFinal)
-        {
-            StartCoroutine(LoadSceneAfterDeath(FIRST_STAGE));
-        }
-        else
-        {
-            StartCoroutine(LoadSceneAfterDeath(FINAL_STAGE));
-        }
+        string sceneToLoad = isDeadFinal ? FINAL_STAGE : FIRST_STAGE;
+
+        StartCoroutine(LoadSceneAfterDeath(sceneToLoad));
     }
 
     private IEnumerator LoadSceneAfterDeath(string sceneName)

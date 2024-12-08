@@ -10,6 +10,7 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField] private TrailRenderer _myTrailRenderer;
     [SerializeField] private Transform _weaponCollider;
 
+    public bool canAttack = true;
     private PlayerControls _playerControls;
     private Vector2 _movement;
     private bool _moving;
@@ -55,8 +56,12 @@ public class PlayerController : Singleton<PlayerController>
 
     private void Update()
     {
-        PlayerInput();
-        Animate();
+        if (canAttack)
+        {
+            PlayerInput();
+            Animate();
+        }
+    
     }
 
     private void FixedUpdate()
