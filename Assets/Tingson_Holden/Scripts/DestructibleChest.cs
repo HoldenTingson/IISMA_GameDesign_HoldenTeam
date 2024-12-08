@@ -5,8 +5,8 @@ using UnityEngine;
 public class DestructibleChest : MonoBehaviour
 {
     [SerializeField] private GameObject destroyVFX;
-    [SerializeField] private Dialogue dialogue; // Reference to the Dialogue script
-    private bool itemDropped = false;  // Status to check if the item has been dropped
+    [SerializeField] private Dialogue dialogue; 
+    private bool itemDropped = false;  
 
     private void OnTriggerEnter2D(Collider2D other)
     {

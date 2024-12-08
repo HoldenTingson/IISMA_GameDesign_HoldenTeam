@@ -42,6 +42,7 @@ public class AreaExit : MonoBehaviour
     private void ProceedToNextScene()
     {
         Debug.Log("All conditions met. Proceeding to the next scene...");
+        UIFade.Instance.FadeToBlack();
         SceneManagement.Instance.SetTransitionName(sceneTransitionName);
         StartCoroutine(LoadSceneRoutine());
     }
