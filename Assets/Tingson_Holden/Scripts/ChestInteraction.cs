@@ -1,80 +1,61 @@
 using UnityEngine;
-using UnityEngine.UI; // Untuk mengakses komponen UI Text jika diperlukan
+using UnityEngine.UI; // For accessing UI Text if needed
 
 public class ChestInteraction : MonoBehaviour
 {
     [SerializeField] private Dialogue dialogue; // Reference to the Dialogue script
     private bool isChestUnlocked = false;
 
-    private void OnMouseDown()
-    {
-        HandleChestInteraction();
-    }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Memastikan hanya senjata pemain yang memicu interaksi
-        if (!isChestUnlocked && other.gameObject.CompareTag("PlayerWeapon"))
+        // Ensure that only the player's weapon or projectile triggers the interaction
+        if (!isChestUnlocked && (other.gameObject.GetComponent<Damage>() || other.gameObject.GetComponent<Projectile>()))
         {
-            // Hanya tampilkan dialog jika masih ada musuh yang hidup
-            if (EnemyManager.Instance.GetEnemyCount() > 0)
+            // If there are still enemies alive, show dialogue. If no enemies are left, unlock the chest
+            if (!EnemyManager.Instance.AllEnemiesDefeated())
             {
-                HandleChestInteraction();
+                StartDialogue();
             }
             else
             {
-                // Jika musuh sudah mati, peti dibuka tanpa dialog
-                UnlockChest();
+                UnlockChest(); // Unlock chest immediately if no enemies are left
             }
         }
     }
 
-    private void HandleChestInteraction()
+    private void StartDialogue()
     {
-        if (isChestUnlocked)
+        if (!isChestUnlocked)
         {
-            Debug.Log("Chest is already unlocked.");
-            return;
-        }
-
-        if (EnemyManager.Instance.GetEnemyCount() > 0)
-        {
-            // Show dialogue if enemies are still alive
-            ResetDialogue();  // Reset dialog before starting a new one
-            dialogue.StartDialogue(null); // Start the dialogue
-        }
-        else
-        {
-            // Unlock the chest and show success dialogue
-            isChestUnlocked = true;
-            ResetDialogue();  // Reset dialog before starting a new one
-            dialogue.StartDialogue(UnlockChest);
+            ResetDialogue();  // Reset any existing dialogue
+            dialogue.StartDialogue(null); // Start the dialogue sequence
         }
     }
 
     private void UnlockChest()
     {
-        isChestUnlocked = true; // Tandai chest telah dibuka
+        if (isChestUnlocked) return; // Don't do anything if already unlocked
+
+
+        isChestUnlocked = true; // Mark the chest as unlocked
         Debug.Log("The chest is now unlocked!");
-        // Tambahkan logika lain seperti animasi membuka chest atau memunculkan item
+
+        // You can add additional logic here, such as animating the chest opening or spawning items
     }
 
-    // Fungsi untuk mereset status dialog
+    // Function to reset dialogue status
     private void ResetDialogue()
     {
-        // Reset teks dialog jika Anda menggunakan UI Text (seperti di Unity)
+        // Reset the dialogue text if you're using Unity's UI Text
         if (dialogue != null)
         {
-            // Misalnya jika 'dialogue' memiliki UI Text yang perlu direset
-            Text dialogueText = dialogue.GetComponentInChildren<Text>(); // Ambil komponen Text dari dalam dialog
+            Text dialogueText = dialogue.GetComponentInChildren<Text>(); // Get the Text component from inside the dialogue
             if (dialogueText != null)
             {
-                dialogueText.text = ""; // Kosongkan teks
+                dialogueText.text = ""; // Clear the text
             }
 
-            // Reset status dialog langsung di sini
-            // Tidak perlu menggunakan ResetActiveStatus() lagi, cukup reset teks dan status lainnya jika diperlukan
-            dialogue.ResetDialogue(); // Panggil ResetDialogue() pada objek Dialogue untuk mereset statusnya
+            dialogue.ResetDialogue(); // Call ResetDialogue on the Dialogue object to reset its status
         }
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class DestructibleChest : MonoBehaviour
 {
     [SerializeField] private GameObject destroyVFX;
+    [SerializeField] private Dialogue dialogue; // Reference to the Dialogue script
     private bool itemDropped = false;  // Status to check if the item has been dropped
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -12,20 +13,38 @@ public class DestructibleChest : MonoBehaviour
         // Check if all enemies are defeated and the item hasn't been dropped yet
         if (EnemyManager.Instance.AllEnemiesDefeated() && !itemDropped)
         {
+            // Ensure it's the player's weapon or projectile that triggered the chest interaction
             if (other.gameObject.GetComponent<Damage>() || other.gameObject.GetComponent<Projectile>())
             {
                 // Drop the item (Bow) if all enemies are defeated and the item hasn't been dropped yet
-                GetComponent<ChestSpawner>().DropItems();
-                Instantiate(destroyVFX, transform.position, Quaternion.identity);
-                gameObject.SetActive(false);
-                itemDropped = true;  // Mark the item as dropped
-                Debug.Log("Chest destroyed!");
+                DropItemAndDestroyChest();
             }
         }
         else if (!EnemyManager.Instance.AllEnemiesDefeated())
         {
-            // Show dialog if there are still enemies left
-            Debug.Log("There are still enemies left! Defeat them first.");
+            // If enemies are still alive, show dialogue and stop game time
+            ResetDialogue();
+            dialogue.StartDialogue();
+        }
+    }
+
+    private void DropItemAndDestroyChest()
+    {
+        // Drop the item (Bow) and destroy the chest
+        GetComponent<ChestSpawner>().DropItems();
+        Instantiate(destroyVFX, transform.position, Quaternion.identity); // VFX for chest destruction
+        gameObject.SetActive(false); // Disable chest object
+
+        // Mark the item as dropped to prevent further drops
+        itemDropped = true;
+    }
+
+    private void ResetDialogue()
+    {
+        // Reset the dialogue text if necessary
+        if (dialogue != null)
+        {
+            dialogue.ResetDialogue(); // Call the ResetDialogue method to clear and reset dialogue status
         }
     }
 }

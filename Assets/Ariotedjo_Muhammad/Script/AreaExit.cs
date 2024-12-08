@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class AreaExit : MonoBehaviour
 {
@@ -12,60 +13,42 @@ public class AreaExit : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Pastikan player yang memasuki trigger
         if (other.gameObject.GetComponent<PlayerController>())
         {
-            // Cek apakah musuh masih ada
-            if (EnemyManager.Instance.GetEnemyCount() > 0)
+            // Check if enemies are still alive or if chest is not destroyed
+            if (EnemyManager.Instance.GetEnemyCount() > 0 || (chestObject != null && chestObject.activeInHierarchy))
             {
-                dialogue.StartDialogue(PauseGameAndDisplay("There are still enemies. Defeat them to proceed."));
-                Debug.Log("There are still enemies. Defeat them to proceed.");
-            }
-            else if (chestObject != null)
-            {
-                // Cek apakah chest sudah dihancurkan
-                if (!chestObject.activeInHierarchy)
-                {
-                    Debug.Log("Chest is destroyed. Proceeding to next scene...");
-                    SceneManagement.Instance.SetTransitionName(sceneTransitionName);
-                    UIFade.Instance.FadeToBlack();
-                    StartCoroutine(LoadSceneRoutine());
-                }
-                else
-                {
-                    dialogue.StartDialogue(PauseGameAndDisplay("You must destroy the chest before proceeding."));
-                    Debug.Log("You must destroy the chest before proceeding.");
-                }
+                // If conditions are not met, show the dialogue
+                ResetDialogue();
+                dialogue.StartDialogue();
             }
             else
             {
-                Debug.Log("All conditions met. Proceeding to the next scene...");
-                SceneManagement.Instance.SetTransitionName(sceneTransitionName);
-                UIFade.Instance.FadeToBlack();
-                StartCoroutine(LoadSceneRoutine());
+                // All conditions are met, proceed to the next scene
+                ProceedToNextScene();
             }
         }
+    }
+
+    private void ResetDialogue()
+    {
+        // Reset the dialogue text if necessary
+        if (dialogue != null)
+        {
+            dialogue.ResetDialogue(); // Call the ResetDialogue method to clear and reset dialogue status
+        }
+    }
+
+    private void ProceedToNextScene()
+    {
+        Debug.Log("All conditions met. Proceeding to the next scene...");
+        SceneManagement.Instance.SetTransitionName(sceneTransitionName);
+        StartCoroutine(LoadSceneRoutine());
     }
 
     private IEnumerator LoadSceneRoutine()
     {
-        // Tunggu sebentar untuk transisi fade
-        while (waitToLoadTime > 0)
-        {
-            waitToLoadTime -= Time.deltaTime;
-            yield return null;
-        }
-
-        // Muat scene berikutnya
+        yield return new WaitForSeconds(waitToLoadTime);
         SceneManager.LoadScene(sceneToLoad);
-    }
-
-    private System.Action PauseGameAndDisplay(string message)
-    {
-        return () =>
-        {
-            Debug.Log(message);
-            Time.timeScale = 1f; // Resume time after dialog finishes
-        };
     }
 }
