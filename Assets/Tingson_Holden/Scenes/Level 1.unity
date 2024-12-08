@@ -79463,7 +79463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: Level 2
-  sceneTransitionName: WEntry
+  sceneTransitionName: Entry
   dialogue: {fileID: 2121159190}
   chestObject: {fileID: 751430732}
 --- !u!210 &6980737891373125961
