@@ -15,12 +15,6 @@ public class ActiveInventory : Singleton<ActiveInventory>
     {
         base.Awake();
 
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
         _playerControls = new PlayerControls();
     }
 
@@ -45,9 +39,32 @@ public class ActiveInventory : Singleton<ActiveInventory>
         _playerControls.Enable();
     }
 
+
     public void EquipStartingWeapon()
     {
         ToggleActiveSlot(1);
+    }
+
+    public void RestartWeapon()
+    {
+        Debug.Log("RestartWeapon called");
+
+        for (int i = 1; i < transform.childCount; i++) 
+        {
+            Transform inventorySlot = transform.GetChild(i);
+            InventorySlot slot = inventorySlot.GetComponent<InventorySlot>();
+
+            if (slot != null)
+            {
+                slot.SetWeaponInfo(null);
+
+                Transform weaponIcon = inventorySlot.Find("Weapon");
+                if (weaponIcon != null)
+                {
+                    Destroy(weaponIcon.gameObject);
+                }
+            }
+        }
     }
 
     private void ToggleActiveSlot(int indexNum)

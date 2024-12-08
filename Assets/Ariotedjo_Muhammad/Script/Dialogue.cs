@@ -35,10 +35,6 @@ public class Dialogue : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Starts the dialogue and pauses the game.
-    /// </summary>
-    /// <param name="callback">Optional callback to invoke after dialogue ends</param>
     public void StartDialogue(System.Action callback = null)
     {
         // Reset everything before starting the dialogue
@@ -49,12 +45,13 @@ public class Dialogue : MonoBehaviour
         Time.timeScale = 0f; // Pause the game
         gameObject.SetActive(true); // Show the dialogue box
         onDialogueComplete = callback; // Assign callback if provided
+
+        DisablePlayerControls();
         StartCoroutine(TypeLine());
     }
 
     private IEnumerator TypeLine()
     {
-        // Reset the text to empty each time a new line starts
         textComponent.text = string.Empty;
 
         foreach (char c in lines[index].ToCharArray())
@@ -77,6 +74,25 @@ public class Dialogue : MonoBehaviour
             EndDialogue();
         }
     }
+    private void DisablePlayerControls()
+    {
+        // Find the PlayerController component and disable it
+        PlayerController playerController = FindObjectOfType<PlayerController>();
+        if (playerController != null)
+        {
+            playerController.enabled = false;  // Disable player movement and attack
+        }
+    }
+
+    private void EnablePlayerControls()
+    {
+        // Re-enable player controls once the dialogue is finished
+        PlayerController playerController = FindObjectOfType<PlayerController>();
+        if (playerController != null)
+        {
+            playerController.enabled = true;  // Enable player movement and attack
+        }
+    }
 
     private void EndDialogue()
     {
@@ -84,14 +100,13 @@ public class Dialogue : MonoBehaviour
         Time.timeScale = 1f; // Resume the game
         gameObject.SetActive(false); // Hide the dialogue box
         onDialogueComplete?.Invoke(); // Invoke the callback if assigned
+        EnablePlayerControls();
     }
 
-    // Reset all necessary fields to ensure dialogue restarts properly
     public void ResetDialogue()
     {
-        // Reset the index and the text box
         index = 0;
-        textComponent.text = string.Empty; // Clear any leftover text
-        isDialogueActive = false; // Set status as inactive
+        textComponent.text = string.Empty;
+        isDialogueActive = false;
     }
 }

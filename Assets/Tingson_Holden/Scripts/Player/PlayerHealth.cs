@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class PlayerHealth : Singleton<PlayerHealth>
 {
     public bool isDead { get; private set; }
+    public bool isDeadFinal { get; private set; }
 
     [SerializeField] private int _maxHealth = 3;
     [SerializeField] private float _knockBackThrustAmount = 10f;
@@ -20,6 +21,7 @@ public class PlayerHealth : Singleton<PlayerHealth>
     private Flash _flash;
 
     private const string FIRST_STAGE = "Level 1";
+    private const string FINAL_STAGE = "Level 4";
     private readonly int DEATH_HASH = Animator.StringToHash("Death");
 
     protected override void Awake()
@@ -84,21 +86,33 @@ public class PlayerHealth : Singleton<PlayerHealth>
 
     private void CheckIfPlayerDeath()
     {
-        if (_currentHealth <= 0 && !isDead)
+        if (_currentHealth > 0 || isDead) return;
+
+        isDead = true;
+        _currentHealth = 0;
+        Destroy(ActiveWeapon.Instance?.gameObject);
+        GetComponent<Animator>().SetTrigger(DEATH_HASH);
+
+        if (!isDeadFinal)
         {
-            isDead = true;
-            Destroy(ActiveWeapon.Instance.gameObject);
-            _currentHealth = 0;
-            GetComponent<Animator>().SetTrigger(DEATH_HASH);
-            StartCoroutine(DeathLoadSceneRoutine());
+            StartCoroutine(LoadSceneAfterDeath(FIRST_STAGE));
+        }
+        else
+        {
+            StartCoroutine(LoadSceneAfterDeath(FINAL_STAGE));
         }
     }
 
-    private IEnumerator DeathLoadSceneRoutine()
+    private IEnumerator LoadSceneAfterDeath(string sceneName)
     {
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(0.5f);
         Destroy(gameObject);
-        SceneManager.LoadScene(FIRST_STAGE);
+        SceneManager.LoadScene(sceneName);
+
+        if (sceneName == FIRST_STAGE)
+        {
+            ActiveInventory.Instance?.RestartWeapon();
+        }
     }
 
     private IEnumerator DamageRecoveryRoutine()
