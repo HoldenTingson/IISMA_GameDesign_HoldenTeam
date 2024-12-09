@@ -5,7 +5,6 @@ using UnityEngine;
 public class DestructibleChest : MonoBehaviour
 {
     [SerializeField] private GameObject destroyVFX;
-    [SerializeField] private Dialogue dialogue; 
     private bool itemDropped = false;  
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -24,9 +23,9 @@ public class DestructibleChest : MonoBehaviour
         {
             // If enemies are still alive, show dialogue and stop game time
             ResetDialogue();
-            dialogue.lines = new string[]
+            Dialogue.Instance.lines = new string[]
                 { "You must defeat all enemies before you can open this chest!", "Make sure no enemy is left behind." };
-            dialogue.StartDialogue();
+            Dialogue.Instance.StartDialogue();
         }
     }
 
@@ -44,9 +43,9 @@ public class DestructibleChest : MonoBehaviour
     private void ResetDialogue()
     {
         // Reset the dialogue text if necessary
-        if (dialogue != null)
+        if (Dialogue.Instance != null)
         {
-            dialogue.ResetDialogue(); // Call the ResetDialogue method to clear and reset dialogue status
+            Dialogue.Instance.ResetDialogue(); // Call the ResetDialogue method to clear and reset dialogue status
         }
     }
 }

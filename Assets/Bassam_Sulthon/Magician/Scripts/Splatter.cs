@@ -4,6 +4,7 @@ using UnityEngine;
 public class Splatter : E_attack
 {
     public float time = 3f; // Total time for the splatter to disappear
+    public float colliderActiveTime = 0.5f; // Time for which collider remains active
     private SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer
     private Color initialColor; // Initial color of the sprite
     private float timer; // Tracks time elapsed
@@ -18,8 +19,8 @@ public class Splatter : E_attack
             initialColor = spriteRenderer.color;
         }
 
-        // Start a coroutine to disable the collider after the first frame
-        StartCoroutine(DisableColliderNextFrame());
+        // Start a coroutine to disable the collider after the defined time
+        StartCoroutine(DisableColliderAfterTime(colliderActiveTime));
     }
 
     void Update()
@@ -42,10 +43,9 @@ public class Splatter : E_attack
         }
     }
 
-    private IEnumerator DisableColliderNextFrame()
+    private IEnumerator DisableColliderAfterTime(float delay)
     {
-        // Wait for one frame
-        yield return null;
+        yield return new WaitForSeconds(delay);
 
         // Disable any collider on the object
         Collider2D collider = GetComponent<Collider2D>();

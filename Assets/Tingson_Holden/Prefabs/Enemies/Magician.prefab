@@ -19,9 +19,10 @@ GameObject:
   - component: {fileID: 4173837295746693464}
   - component: {fileID: 1278747854679416818}
   - component: {fileID: 7907301127492221353}
+  - component: {fileID: 5380722180621829069}
   m_Layer: 0
   m_Name: Magician
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -202,7 +203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startingHealth: 3
-  _deathVfxPrefab: {fileID: 0}
+  _deathVfxPrefab: {fileID: 2284033693174351575, guid: a2794ab8d329dc44897c97620a9814eb, type: 3}
   _knockBackThrust: 0
 --- !u!114 &9038691553158349664
 MonoBehaviour:
@@ -242,7 +243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd8eae858eec5a6468ce9b9b54d55f57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _whiteFlashMat: {fileID: 0}
+  _whiteFlashMat: {fileID: 2100000, guid: fb852a2e1c5a7a74d8bd4b5c062f0241, type: 2}
   _restoreDefaultMatTime: 0.2
 --- !u!114 &7907301127492221353
 MonoBehaviour:
@@ -261,3 +262,17 @@ MonoBehaviour:
   splatter: {fileID: 9069805408645550077, guid: 281b58c3943190f43938b2d8eb2a5d5c, type: 3}
   min_timer: 0.5
   max_timer: 1.5
+--- !u!114 &5380722180621829069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664446495556907990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d3ff14aacf378498c9f22b4dddc272, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthGlobe: {fileID: 6865688985060940805, guid: 1303630069df0cb4a9f273612761a512, type: 3}
+  _staminaGlobe: {fileID: 4307771151257586934, guid: d393426ffd985e54abe9d678c598e47d, type: 3}

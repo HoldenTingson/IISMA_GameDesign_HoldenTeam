@@ -8,7 +8,7 @@ public class CurvedProjectile : MonoBehaviour
     private Vector3 from;    // Starting point
     private Vector3 to;      // Ending point (target position)
     private Vector3 controlPoint; // Control point for the curve
-    private float travelTime = 3f; // Total time to reach the target
+    private float travelTime = 2f; // Total time to reach the target
     private float counter; // Tracks progress along the curve (0 to 1)
     public GameObject splatter;
 

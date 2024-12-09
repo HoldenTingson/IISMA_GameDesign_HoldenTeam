@@ -23,5 +23,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Tingson_Holden/Scenes/Level 3.unity
     guid: 1057e41c6644d7b4da6d8a2e6734ba8a
+  - enabled: 1
+    path: Assets/Tingson_Holden/Scenes/Level 4.unity
+    guid: 2f91377cf25bec34ebc08ff54ed511fb
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 86c6e8ecf70aa484fb6a3a66bb1af08a, type: 2}

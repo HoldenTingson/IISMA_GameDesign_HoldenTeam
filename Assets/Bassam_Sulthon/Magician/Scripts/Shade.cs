@@ -7,7 +7,7 @@ public class Shade : MonoBehaviour
     public Transform target; // The destination
     private Vector3 from;    // Starting point
     private Vector3 to;      // Ending point (target position)
-    private float travelTime = 3f; // Time it takes to reach the target
+    private float travelTime = 2f; // Time it takes to reach the target
     private Vector3 speed; // Movement speed
     private float counter; // Tracks progress
 

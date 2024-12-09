@@ -7,7 +7,6 @@ public class AreaExit : MonoBehaviour
 {
     [SerializeField] private string sceneToLoad;
     [SerializeField] private string sceneTransitionName;
-    [SerializeField] private Dialogue dialogue; // Reference to the Dialogue script
     [SerializeField] private GameObject chestObject;
     private float waitToLoadTime = 1f;
 
@@ -20,9 +19,9 @@ public class AreaExit : MonoBehaviour
             {
                 // If conditions are not met, show the dialogue
                 ResetDialogue();
-                dialogue.lines = new string[]
+                Dialogue.Instance.lines = new string[]
                     { "You must open the chest before you can enter this portal!", "Try to find and open the chest." };
-                dialogue.StartDialogue();
+                Dialogue.Instance.StartDialogue();
             }
             else
             {
@@ -35,9 +34,9 @@ public class AreaExit : MonoBehaviour
     private void ResetDialogue()
     {
         // Reset the dialogue text if necessary
-        if (dialogue != null)
+        if (Dialogue.Instance != null)
         {
-            dialogue.ResetDialogue(); // Call the ResetDialogue method to clear and reset dialogue status
+            Dialogue.Instance.ResetDialogue(); // Call the ResetDialogue method to clear and reset dialogue status
         }
     }
 
