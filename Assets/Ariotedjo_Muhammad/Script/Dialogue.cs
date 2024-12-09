@@ -12,7 +12,6 @@ public class Dialogue : MonoBehaviour
     private bool isDialogueActive = false;
     private System.Action onDialogueComplete; // Callback for when dialogue ends
 
-
     void Start()
     {
         textComponent.text = string.Empty;

@@ -20,6 +20,8 @@ public class AreaExit : MonoBehaviour
             {
                 // If conditions are not met, show the dialogue
                 ResetDialogue();
+                dialogue.lines = new string[]
+                    { "You must open the chest before you can enter this portal!", "Try to find and open the chest." };
                 dialogue.StartDialogue();
             }
             else
