@@ -42,7 +42,9 @@ public class PlayerHealth : Singleton<PlayerHealth>
     {
         EnemyAI enemy = other.gameObject.GetComponent<EnemyAI>();
 
-        if (enemy && _canTakeDamage)
+        Splatter magician = other.gameObject.GetComponent<Splatter>();
+
+        if ((enemy || magician) && _canTakeDamage )
         {
             TakeDamage(1);
             _knockBack.GetKnockedBack(other.gameObject.transform, _knockBackThrustAmount);
