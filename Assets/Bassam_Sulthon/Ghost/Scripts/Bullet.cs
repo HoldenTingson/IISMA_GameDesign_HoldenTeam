@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Bullet : E_attack
 {
-    public float time =5f;
+    public float time =3f;
+
     void Start()
     {
         Invoke(nameof(destroyBullet), time);
-        damage = 20;
     }
 
     void destroyBullet()
@@ -17,8 +17,9 @@ public class Bullet : E_attack
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("player"))
+        if (other.gameObject.CompareTag("Player"))
         {
+            PlayerHealth.Instance.TakeDamage(3);
             destroyBullet();   
         }
     }
