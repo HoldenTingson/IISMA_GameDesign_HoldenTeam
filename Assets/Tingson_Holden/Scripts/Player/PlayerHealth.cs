@@ -10,7 +10,7 @@ public class PlayerHealth : Singleton<PlayerHealth>
     public bool isDead { get; private set; }
     public bool isDeadFinal { get; private set; }
 
-    [SerializeField] private int _maxHealth = 3;
+    [SerializeField] private int _maxHealth = 100;
     [SerializeField] private float _knockBackThrustAmount = 10f;
     [SerializeField] private float _damageRecoveryTime = 1f;
 
@@ -42,9 +42,11 @@ public class PlayerHealth : Singleton<PlayerHealth>
     {
         EnemyAI enemy = other.gameObject.GetComponent<EnemyAI>();
 
-        Splatter magician = other.gameObject.GetComponent<Splatter>();
+        MagicianAI magician = other.gameObject.GetComponent<MagicianAI>();
 
-        if ((enemy || magician) && _canTakeDamage )
+        AoeShot ghost = other.gameObject.GetComponent<AoeShot>();
+
+        if ((enemy || magician || ghost) && _canTakeDamage )
         {
             TakeDamage(1);
             _knockBack.GetKnockedBack(other.gameObject.transform, _knockBackThrustAmount);
@@ -61,7 +63,7 @@ public class PlayerHealth : Singleton<PlayerHealth>
         }
     }
 
-    private void TakeDamage(int damageAmount)
+    public void TakeDamage(int damageAmount)
     {
         if (!_canTakeDamage)
         {
@@ -71,6 +73,7 @@ public class PlayerHealth : Singleton<PlayerHealth>
         _canTakeDamage = false;
         _currentHealth -= damageAmount;
         StartCoroutine(DamageRecoveryRoutine());
+        StartCoroutine(_flash.FlashRoutine());
         UpdateHealthSlider();
         CheckIfPlayerDeath();
     }

@@ -21,11 +21,16 @@ public class DestructibleChest : MonoBehaviour
         }
         else if (!EnemyManager.Instance.AllEnemiesDefeated())
         {
-            // If enemies are still alive, show dialogue and stop game time
-            ResetDialogue();
-            Dialogue.Instance.lines = new string[]
-                { "You must defeat all enemies before you can open this chest!", "Make sure no enemy is left behind." };
-            Dialogue.Instance.StartDialogue();
+            if (other.gameObject.GetComponent<Damage>() || other.gameObject.GetComponent<Projectile>())
+            {
+                // If enemies are still alive, show dialogue and stop game time
+                ResetDialogue();
+                Dialogue.Instance.lines = new string[]
+                {
+                    "You must defeat all enemies before you can open this chest!", "Make sure no enemy is left behind."
+                };
+                Dialogue.Instance.StartDialogue();
+            }
         }
     }
 
