@@ -51387,7 +51387,7 @@ GameObject:
   - component: {fileID: 600916504}
   - component: {fileID: 600916503}
   m_Layer: 5
-  m_Name: Border (1)
+  m_Name: Inner Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51402,7 +51402,7 @@ RectTransform:
   m_GameObject: {fileID: 600916501}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
+  m_LocalScale: {x: 0.93, y: 0.93, z: 0.93}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 817176491}
@@ -52033,7 +52033,7 @@ PrefabInstance:
     - target: {fileID: 264896281311307768, guid: 2962b160e39d0b64eb0356988ee96fea, type: 3}
       propertyPath: _item
       value: 
-      objectReference: {fileID: 899831587480174285, guid: 537e4befa4d2ec14587e7c5787c071d6, type: 3}
+      objectReference: {fileID: 141483238260305342, guid: 30e41713db600d748a5f0c8ef91896cf, type: 3}
     - target: {fileID: 1086730068195537004, guid: 2962b160e39d0b64eb0356988ee96fea, type: 3}
       propertyPath: dialogue
       value: 
@@ -53304,6 +53304,7 @@ MonoBehaviour:
   _myTrailRenderer: {fileID: 689872160}
   _weaponCollider: {fileID: 1682530162}
   canAttack: 1
+  _unlockDash: 0
 --- !u!95 &871098696
 Animator:
   serializedVersion: 5
@@ -71339,7 +71340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2264151, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.26666668, g: 0.15686275, b: 0.019607844, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

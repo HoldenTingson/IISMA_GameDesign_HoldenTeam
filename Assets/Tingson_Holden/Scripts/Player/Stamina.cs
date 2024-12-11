@@ -25,6 +25,13 @@ public class Stamina : Singleton<Stamina>
     {
         _staminaContainer = GameObject.Find("StaminaContainer").transform;
     }
+    public void ResetStamina()
+    {
+        CurrentStamina = _maxStamina;
+        UpdateStaminaImages();
+        StopAllCoroutines();
+        StartCoroutine(RefreshStaminaRoutine());
+    }
 
     public void UseStamina()
     {
