@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
 
 public class PlayerHealth : Singleton<PlayerHealth>
@@ -19,6 +18,7 @@ public class PlayerHealth : Singleton<PlayerHealth>
     private bool _canTakeDamage = true;
     private KnockBack _knockBack;
     private Flash _flash;
+    private static bool previousDashState;
 
     private const string FIRST_STAGE = "Level 1";
     private const string FINAL_STAGE = "Level 4";
@@ -100,6 +100,7 @@ public class PlayerHealth : Singleton<PlayerHealth>
         Destroy(ActiveWeapon.Instance?.gameObject);
         GetComponent<Animator>().SetTrigger(DEATH_HASH);
 
+        previousDashState = PlayerController.Instance._unlockDash;
         string sceneToLoad = isDeadFinal ? FINAL_STAGE : FIRST_STAGE;
 
         StartCoroutine(LoadSceneAfterDeath(sceneToLoad));
@@ -110,12 +111,21 @@ public class PlayerHealth : Singleton<PlayerHealth>
         yield return new WaitForSeconds(0.5f);
         Destroy(gameObject);
         SceneManager.LoadScene(sceneName);
+        Stamina.Instance.ResetStamina();
 
         if (sceneName == FIRST_STAGE)
         {
+            previousDashState = false;
             ActiveInventory.Instance?.RestartWeapon();
         }
     }
+
+
+    public static bool GetPreviousDashState()
+    {
+        return previousDashState;
+    }
+
 
     private IEnumerator DamageRecoveryRoutine()
     {

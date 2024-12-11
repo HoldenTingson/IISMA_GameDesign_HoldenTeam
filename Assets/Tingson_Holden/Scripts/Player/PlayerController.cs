@@ -23,7 +23,7 @@ public class PlayerController : Singleton<PlayerController>
     private KnockBack _knockBack;
     private bool _facingLeft = false;
     private bool _isDashing = false;
-    private bool _unlockDash = false;
+    public bool _unlockDash = false;
     public bool FacingLeft { get { return _facingLeft; } }
 
     protected override void Awake()
@@ -42,6 +42,7 @@ public class PlayerController : Singleton<PlayerController>
         _startingMoveSpeed = _moveSpeed;
 
         ActiveInventory.Instance.EquipStartingWeapon();
+        _unlockDash = PlayerHealth.GetPreviousDashState();
     }
 
     private void OnEnable()

@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour
     public void startGame()
     {
         Debug.Log("startGame");
-        SceneManager.LoadScene("Ibnu_Wiratomo/Levels/Level1Test");
+        SceneManager.LoadScene("Tingson_Holden/Scenes/Level 1");
     }
 
     public void setting()
