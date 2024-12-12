@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -52,6 +53,7 @@ public class EnemyManager : MonoBehaviour
 
     public int GetEnemyCount()
     {
+        Debug.Log(enemies.Count);
         return enemies.Count;
     }
 
@@ -60,11 +62,5 @@ public class EnemyManager : MonoBehaviour
     {
         UpdateEnemyList();
         return enemies.Count == 0;
-    }
-
-    // Debug: Log the current enemy count
-    private void Update()
-    {
-        Debug.Log($"Current enemy count: {GetEnemyCount()}");
     }
 }
