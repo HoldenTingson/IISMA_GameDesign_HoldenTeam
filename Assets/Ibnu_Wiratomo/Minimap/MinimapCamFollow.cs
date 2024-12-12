@@ -12,11 +12,8 @@ public class MiniMapCamController : MonoBehaviour
     public float smoothing = 5f;
     Vector3 offset;
 
-    private bool drag = false;
     [SerializeField] Transform target;
 
-    public float shakeDuration = .5f;
-    public AnimationCurve curve;
 
     private void Start()
     {
