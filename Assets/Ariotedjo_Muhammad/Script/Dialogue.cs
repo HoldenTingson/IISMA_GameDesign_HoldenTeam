@@ -15,7 +15,6 @@ public class Dialogue : Singleton<Dialogue>
     protected override void Awake()
     {
         base.Awake();
-        DontDestroyOnLoad(gameObject);
         textComponent.text = string.Empty;
         gameObject.SetActive(false);
     }

@@ -48,6 +48,6 @@ public class MagicianPathFinding : MonoBehaviour
 
     public void attackChange()
     {
-        attacking = (attacking == true) ? false : true;
+        attacking = attacking != true;
     }
 }
