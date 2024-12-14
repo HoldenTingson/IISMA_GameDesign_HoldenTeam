@@ -8,21 +8,19 @@ public class Magician : MonoBehaviour
     public GameObject projectile;
     public GameObject splatter;
 
-    // Automatically find the player tag at runtime
     private GameObject target;
 
     public float min_timer = 0.5f;
     public float max_timer = 1.5f;
+    public float attackRange = 5f; // The range within which the magician can attack
 
     private Animator animator;
     private MagicianAI ai;
 
     void Awake()
     {
-        // Find the player by tag, with error handling
         target = GameObject.FindGameObjectWithTag("Player");
 
-        // Add null check to prevent potential null reference exceptions
         if (target == null)
         {
             Debug.LogError("No GameObject with 'Player' tag found in the scene!");
@@ -45,15 +43,18 @@ public class Magician : MonoBehaviour
         {
             yield return new WaitForSeconds(Random.Range(min_timer, max_timer));
 
-            animator.SetBool("Attacking", true);
-            ai.ChangeState();
+            if (IsPlayerInRange())
+            {
+                animator.SetBool("Attacking", true);
+                ai.ChangeState();
 
-            yield return new WaitForSeconds(0.35f);
+                yield return new WaitForSeconds(0.35f);
 
-            LobEm(); // Call the Shoot function
+                LobEm(); // Call the Shoot function
 
-            animator.SetBool("Attacking", false);
-            ai.ChangeState();
+                animator.SetBool("Attacking", false);
+                ai.ChangeState();
+            }
         }
     }
 
@@ -71,5 +72,13 @@ public class Magician : MonoBehaviour
         curvy.splatter = splatter;
 
         GameObject proj = Instantiate(projectile, transform.position, transform.rotation);
+    }
+
+    bool IsPlayerInRange()
+    {
+        if (target == null) return false;
+
+        float distance = Vector3.Distance(transform.position, target.transform.position);
+        return distance <= attackRange;
     }
 }
