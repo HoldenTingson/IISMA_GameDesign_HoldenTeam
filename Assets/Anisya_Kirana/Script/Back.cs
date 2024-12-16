@@ -8,8 +8,7 @@ public class Back : MonoBehaviour
 {
     public void back()
     {
-        Debug.Log("back");
-        SceneManager.LoadScene("Anisya_Kirana/Scenes/MainMenu");
+        Debug.Log("Returning to Main Menu...");
+        SceneManager.LoadScene("MainMenu"); // Use the scene's name as listed in Build Settings
     }
-    
 }
