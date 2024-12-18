@@ -6,7 +6,6 @@ public class MagicianAI : MonoBehaviour
 {
     [SerializeField] private float roamChangeDirFloat = 2f;
 
-    private bool canAttack = true;
     private Vector2 roamPosition;
     private float timeRoaming = 0f;
 

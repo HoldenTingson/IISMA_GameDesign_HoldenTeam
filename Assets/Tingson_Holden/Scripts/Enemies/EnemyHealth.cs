@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] private int _startingHealth = 3;
+    [SerializeField] public int _startingHealth = 3;
     [SerializeField] private GameObject _deathVfxPrefab;
     [SerializeField] private float _knockBackThrust;
 
-    private int _currentHealth;
+    public bool TestingMode { get; set; } = false;
+    public int _currentHealth;
     private KnockBack _knockBack;
     private Flash _flash;
 
@@ -26,25 +27,40 @@ public class EnemyHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         _currentHealth -= damage;
-        _knockBack.GetKnockedBack(PlayerController.Instance.transform, _knockBackThrust);
-        StartCoroutine(_flash.FlashRoutine());
+
+        if (!TestingMode)
+        {
+            _knockBack.GetKnockedBack(PlayerController.Instance.transform, _knockBackThrust);
+            StartCoroutine(_flash.FlashRoutine());
+        }
+
         StartCoroutine(CheckDetectDeathRoutine());
     }
 
     private IEnumerator CheckDetectDeathRoutine()
     {
-        yield return new WaitForSeconds(_flash.GetRestoreMatTime());
+        if (!TestingMode)
+        {
+            yield return new WaitForSeconds(_flash.GetRestoreMatTime());
+        }
+        else
+        {
+            yield return null;
+        }
+
         DetectHealth();
     }
 
     public void DetectHealth()
     {
-        if (_currentHealth <= 0)
+        if (_currentHealth > 0) return;
+        if (!TestingMode)
         {
             Instantiate(_deathVfxPrefab, transform.position, Quaternion.identity);
             GetComponent<PickupSpawner>().DropItems();
-            Destroy(gameObject);
         }
+            
+        Destroy(gameObject);
     }
 
     

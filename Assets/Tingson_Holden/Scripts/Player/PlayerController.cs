@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.Collections;
 using UnityEngine;
 
+
 public class PlayerController : Singleton<PlayerController>
 {
     [SerializeField] private float _moveSpeed = 2f;
@@ -10,6 +11,7 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField] private TrailRenderer _myTrailRenderer;
     [SerializeField] private Transform _weaponCollider;
 
+    public bool TestingMode { get; set; } = false;
     public bool canAttack = true;
     private PlayerControls _playerControls;
     private Vector2 _movement;
@@ -41,18 +43,22 @@ public class PlayerController : Singleton<PlayerController>
         _playerControls.Combat.Dash.performed += _ => Dash();
         _startingMoveSpeed = _moveSpeed;
 
+        if (TestingMode)
+        {
+            return;
+        }
         ActiveInventory.Instance.EquipStartingWeapon();
         _unlockDash = PlayerHealth.GetPreviousDashState();
     }
 
     private void OnEnable()
     {
-        _playerControls.Enable();
+        _playerControls?.Enable();
     }
 
     private void OnDisable()
     {
-        _playerControls.Disable();
+        _playerControls?.Disable();
     }
 
     private void Update()
@@ -60,6 +66,10 @@ public class PlayerController : Singleton<PlayerController>
         if (canAttack)
         {
             PlayerInput();
+            if (TestingMode)
+            {
+                return;
+            }
             Animate();
         }
     
@@ -96,7 +106,7 @@ public class PlayerController : Singleton<PlayerController>
         _myAnimator.SetBool("Moving", _moving);
     }
 
-    private void PlayerInput()
+    public void PlayerInput()
     {
         _moveX = Input.GetAxisRaw("Horizontal");
         _moveY = Input.GetAxisRaw("Vertical");
@@ -107,6 +117,10 @@ public class PlayerController : Singleton<PlayerController>
 
     private void Move()
     {
+        if (TestingMode)
+        {
+            return;
+        }
         if (_knockBack.GettingKnockedBack || PlayerHealth.Instance.isDead)
         {
             return;
