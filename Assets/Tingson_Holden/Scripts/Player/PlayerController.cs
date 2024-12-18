@@ -11,7 +11,6 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField] private TrailRenderer _myTrailRenderer;
     [SerializeField] private Transform _weaponCollider;
 
-    public bool TestingMode { get; set; } = false;
     public bool canAttack = true;
     private PlayerControls _playerControls;
     private Vector2 _movement;
@@ -42,11 +41,6 @@ public class PlayerController : Singleton<PlayerController>
     {
         _playerControls.Combat.Dash.performed += _ => Dash();
         _startingMoveSpeed = _moveSpeed;
-
-        if (TestingMode)
-        {
-            return;
-        }
         ActiveInventory.Instance.EquipStartingWeapon();
         _unlockDash = PlayerHealth.GetPreviousDashState();
     }
@@ -63,16 +57,10 @@ public class PlayerController : Singleton<PlayerController>
 
     private void Update()
     {
-        if (canAttack)
-        {
-            PlayerInput();
-            if (TestingMode)
-            {
-                return;
-            }
-            Animate();
-        }
-    
+        if (!canAttack) return;
+        PlayerInput();
+        Animate();
+
     }
 
     private void FixedUpdate()
@@ -117,10 +105,6 @@ public class PlayerController : Singleton<PlayerController>
 
     private void Move()
     {
-        if (TestingMode)
-        {
-            return;
-        }
         if (_knockBack.GettingKnockedBack || PlayerHealth.Instance.isDead)
         {
             return;
@@ -133,15 +117,16 @@ public class PlayerController : Singleton<PlayerController>
     {
         var horizontalInput = Input.GetAxis("Horizontal");
 
-        if (horizontalInput < 0)
+        switch (horizontalInput)
         {
-            _mySpriteRenderer.flipX = true;
-            _facingLeft = true;
-        }
-        else if (horizontalInput > 0)
-        {
-            _mySpriteRenderer.flipX = false;
-            _facingLeft = false;
+            case < 0:
+                _mySpriteRenderer.flipX = true;
+                _facingLeft = true;
+                break;
+            case > 0:
+                _mySpriteRenderer.flipX = false;
+                _facingLeft = false;
+                break;
         }
     }
 
@@ -152,14 +137,12 @@ public class PlayerController : Singleton<PlayerController>
 
     private void Dash()
     {
-        if (!_isDashing && Stamina.Instance.CurrentStamina > 0 && _unlockDash)
-        {
-            Stamina.Instance.UseStamina();
-            _isDashing = true;
-            _moveSpeed *= _dashSpeed;
-            _myTrailRenderer.emitting = true;
-            StartCoroutine(EndDashRoutine());
-        }
+        if (_isDashing || Stamina.Instance.CurrentStamina <= 0 || !_unlockDash) return;
+        Stamina.Instance.UseStamina();
+        _isDashing = true;
+        _moveSpeed *= _dashSpeed;
+        _myTrailRenderer.emitting = true;
+        StartCoroutine(EndDashRoutine());
     }
 
     private IEnumerator EndDashRoutine()

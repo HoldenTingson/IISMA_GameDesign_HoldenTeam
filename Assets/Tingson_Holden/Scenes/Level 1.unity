@@ -54536,6 +54536,7 @@ MonoBehaviour:
   _maxHealth: 5
   _knockBackThrustAmount: 10
   _damageRecoveryTime: 1
+  _currentHealth: 0
 --- !u!70 &1041085271
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

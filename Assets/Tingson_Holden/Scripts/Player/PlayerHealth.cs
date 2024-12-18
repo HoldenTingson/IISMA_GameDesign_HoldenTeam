@@ -9,12 +9,13 @@ public class PlayerHealth : Singleton<PlayerHealth>
     public bool isDead { get; private set; }
     public bool isDeadFinal { get; private set; }
 
-    [SerializeField] private int _maxHealth = 100;
+    [SerializeField] public int _maxHealth = 100;
     [SerializeField] private float _knockBackThrustAmount = 10f;
     [SerializeField] private float _damageRecoveryTime = 1f;
 
+    public bool TestingMode { get; set; } = false;
     private Slider _healthSlider;
-    private int _currentHealth;
+    public int _currentHealth;
     private bool _canTakeDamage = true;
     private KnockBack _knockBack;
     private Flash _flash;
@@ -35,7 +36,11 @@ public class PlayerHealth : Singleton<PlayerHealth>
     {
         isDead = false;
         _currentHealth = _maxHealth;
-        UpdateHealthSlider();
+
+        if (!TestingMode)
+        {
+            UpdateHealthSlider();
+        }
     }
 
     private void OnCollisionStay2D(Collision2D other)
@@ -56,11 +61,9 @@ public class PlayerHealth : Singleton<PlayerHealth>
 
     public void HealPlayer()
     {
-        if (_currentHealth < _maxHealth)
-        {
-            _currentHealth += 1;
-            UpdateHealthSlider();
-        }
+        if (_currentHealth >= _maxHealth) return;
+        _currentHealth += 1;
+        UpdateHealthSlider();
     }
 
     public void TakeDamage(int damageAmount)
@@ -72,9 +75,14 @@ public class PlayerHealth : Singleton<PlayerHealth>
 
         _canTakeDamage = false;
         _currentHealth -= damageAmount;
-        StartCoroutine(DamageRecoveryRoutine());
-        StartCoroutine(_flash.FlashRoutine());
-        UpdateHealthSlider();
+
+        if (!TestingMode)
+        {
+            StartCoroutine(DamageRecoveryRoutine());
+            StartCoroutine(_flash.FlashRoutine());
+            UpdateHealthSlider();
+        }
+
         CheckIfPlayerDeath();
     }
 
@@ -95,6 +103,7 @@ public class PlayerHealth : Singleton<PlayerHealth>
 
         isDead = true;
 
+        if (TestingMode) return;
         isDeadFinal = SceneManagement.Instance.GetCurrentSceneName() == FINAL_STAGE;
         _currentHealth = 0;
         Destroy(ActiveWeapon.Instance?.gameObject);
