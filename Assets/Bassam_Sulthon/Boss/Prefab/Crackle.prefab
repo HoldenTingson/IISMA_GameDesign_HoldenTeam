@@ -13,7 +13,9 @@ GameObject:
   - component: {fileID: 8100352239231642348}
   - component: {fileID: 7164041858547717955}
   - component: {fileID: -6772090634202397565}
-  m_Layer: 0
+  - component: {fileID: 7857926855322662753}
+  - component: {fileID: 8719797350142420773}
+  m_Layer: 20
   m_Name: Crackle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +119,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.059422493, y: 0.11884546}
@@ -145,6 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bc29bea86b7ac84f9b3c3a8e22e27d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _knockBackThrustAmount: 10
 --- !u!210 &-6772090634202397565
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -153,10 +156,50 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2475552984125814153}
   m_Enabled: 1
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1240032861
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_SortAtRoot: 0
+--- !u!114 &7857926855322662753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2475552984125814153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae97ad90b2906f1489e74a4f9e88300e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _knockBackTime: 0.2
+--- !u!50 &8719797350142420773
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2475552984125814153}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &3618385867447884775
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,7 +211,7 @@ GameObject:
   - component: {fileID: 1509619456344850832}
   - component: {fileID: 4287339290344918453}
   - component: {fileID: 404354560484009974}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}

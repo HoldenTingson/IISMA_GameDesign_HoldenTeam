@@ -63,12 +63,12 @@ public class Magician : MonoBehaviour
         if (target == null) return; // Additional safety check
 
         Shade shadey = shadow.GetComponent<Shade>();
-        shadey.target = target.transform;
+        shadey.target = target.transform.position;
 
         GameObject shade = Instantiate(shadow, transform.position, transform.rotation);
 
         CurvedProjectile curvy = projectile.GetComponent<CurvedProjectile>();
-        curvy.target = shadey.target;
+        curvy.target.position = shadey.target;
         curvy.splatter = splatter;
 
         GameObject proj = Instantiate(projectile, transform.position, transform.rotation);

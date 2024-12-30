@@ -10,6 +10,7 @@ public class BossAttack : MonoBehaviour
     [SerializeField] private float minTimer = 1f;
     [SerializeField] private float maxTimer = 2f;
     [SerializeField] private float attackDelay = 3f;
+    [SerializeField] private float attackRange = 10f;
     private IdleFloat idle;
     [SerializeField] private GameObject Crackle;
     [SerializeField] private GameObject[] Projectile;
@@ -26,7 +27,7 @@ public class BossAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        target = GameObject.FindGameObjectWithTag("player");
+        target = GameObject.FindGameObjectWithTag("Player");
         sprites = gameObject.GetComponent<BossSprites>();
         startPos = transform.position;
         idle = gameObject.GetComponent<IdleFloat>();
@@ -38,17 +39,22 @@ public class BossAttack : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(Random.Range(minTimer, maxTimer));
-            int decider = Random.Range(1, 3);
-            switch (decider)
+            float distanceToPlayer = Vector3.Distance(transform.position, target.transform.position);
+
+            if (distanceToPlayer <= attackRange)
             {
-                case int n when n == 1:
-                    StartCoroutine(Avalanche());
-                    break;
-                 case int n when n <= 2:
-                     StartCoroutine(Smash());
-                     break;
+                int decider = Random.Range(1, 3);
+                switch (decider)
+                {
+                    case int n when n == 1:
+                        StartCoroutine(Avalanche());
+                        break;
+                    case int n when n <= 2:
+                        StartCoroutine(Smash());
+                        break;
+                }
             }
-            yield return new WaitForSeconds(6f + Random.Range(1f, attackDelay)); 
+            yield return new WaitForSeconds(6f + Random.Range(1f, attackDelay));
         }
     }
 
@@ -76,6 +82,8 @@ public class BossAttack : MonoBehaviour
             yield return null;
         }
         GameObject smashed = Instantiate(Crackle, transform.position, Quaternion.identity);
+        CheckAndApplyDamage();
+
         yield return new WaitForSeconds(2f);// 2 second
         sprites.ChangeTo(0);
 
@@ -186,6 +194,18 @@ public class BossAttack : MonoBehaviour
         }// 1second
         idle.enabled = true;
         avalanching = false;
+    }
+
+    private void CheckAndApplyDamage()
+    {
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, 1f); // Adjust radius as needed
+        foreach (var collider in hitColliders)
+        {
+            if (collider.CompareTag("Player"))
+            {
+                PlayerHealth.Instance.TakeDamage(3);
+            }
+        }
     }
 
     public void StopBossCoroutine()

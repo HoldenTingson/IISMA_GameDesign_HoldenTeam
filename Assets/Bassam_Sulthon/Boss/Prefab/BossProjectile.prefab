@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -8522257902759392879}
   - component: {fileID: -8177721311388249922}
   - component: {fileID: 164033001075328210}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: BossProjectile
   m_TagString: enemy
   m_Icon: {fileID: 0}
@@ -179,14 +179,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5418112693128154863}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a2d8fe40e44b94e45a1c6ac668606aac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {x: -3.0022335, y: -4.8379664, z: 0}
   crackle: {fileID: 2475552984125814153, guid: 2c6d6f8fbcd39474a83d0718f75c1b4f, type: 3}
-  shade: {fileID: 8447571148861035925, guid: 5304f86b65aaebd4d908b2001e16d7dd, type: 3}
+  shade: {fileID: 8447571148861035925, guid: d1fd7ea72cb979e40b9562ba8ce35441, type: 3}
 --- !u!210 &-8177721311388249922
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -195,8 +195,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5418112693128154863}
   m_Enabled: 1
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1240032861
+  m_SortingLayer: 1
   m_SortingOrder: 12
   m_SortAtRoot: 0
 --- !u!114 &164033001075328210

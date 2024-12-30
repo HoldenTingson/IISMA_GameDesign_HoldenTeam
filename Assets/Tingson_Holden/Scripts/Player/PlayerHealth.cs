@@ -51,7 +51,11 @@ public class PlayerHealth : Singleton<PlayerHealth>
 
         AoeShot ghost = other.gameObject.GetComponent<AoeShot>();
 
-        if ((enemy || magician || ghost) && _canTakeDamage )
+        IdleFloat bossHead = other.gameObject.GetComponent<IdleFloat>();
+
+        BossHealth bossBody = other.gameObject.GetComponent<BossHealth>();
+
+        if ((enemy || magician || ghost || bossBody || bossHead) && _canTakeDamage )
         {
             TakeDamage(1);
             _knockBack.GetKnockedBack(other.gameObject.transform, _knockBackThrustAmount);

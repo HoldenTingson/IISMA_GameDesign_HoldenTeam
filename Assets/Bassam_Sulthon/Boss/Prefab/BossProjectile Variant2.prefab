@@ -8,6 +8,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8177721311388249922, guid: a8d912aff5a82f641a0f21ac4fb9ee8b, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8177721311388249922, guid: a8d912aff5a82f641a0f21ac4fb9ee8b, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1240032861
+      objectReference: {fileID: 0}
     - target: {fileID: 4430923604730892473, guid: a8d912aff5a82f641a0f21ac4fb9ee8b, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -15,6 +23,10 @@ PrefabInstance:
     - target: {fileID: 5418112693128154863, guid: a8d912aff5a82f641a0f21ac4fb9ee8b, type: 3}
       propertyPath: m_Name
       value: BossProjectile Variant2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5418112693128154863, guid: a8d912aff5a82f641a0f21ac4fb9ee8b, type: 3}
+      propertyPath: m_Layer
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5617738430382420453, guid: a8d912aff5a82f641a0f21ac4fb9ee8b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -59,7 +71,7 @@ PrefabInstance:
     - target: {fileID: 7202762566123841475, guid: a8d912aff5a82f641a0f21ac4fb9ee8b, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: be66eac6ed0ee9b42acc664fbb10a9c8, type: 3}
+      objectReference: {fileID: 21300000, guid: 09bfccffeef9e684c9c6d3bebb254227, type: 3}
     m_RemovedComponents:
     - {fileID: -8522257902759392879, guid: a8d912aff5a82f641a0f21ac4fb9ee8b, type: 3}
     m_RemovedGameObjects: []

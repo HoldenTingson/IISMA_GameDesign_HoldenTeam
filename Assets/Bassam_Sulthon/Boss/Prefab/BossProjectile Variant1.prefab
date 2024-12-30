@@ -10,19 +10,35 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8522257902759392879, guid: a8d912aff5a82f641a0f21ac4fb9ee8b, type: 3}
       propertyPath: target.x
-      value: -0.18214929
+      value: -1.1776937
       objectReference: {fileID: 0}
     - target: {fileID: -8522257902759392879, guid: a8d912aff5a82f641a0f21ac4fb9ee8b, type: 3}
       propertyPath: target.y
-      value: 7.430151
+      value: 1.5810698
       objectReference: {fileID: 0}
     - target: {fileID: -8522257902759392879, guid: a8d912aff5a82f641a0f21ac4fb9ee8b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8177721311388249922, guid: a8d912aff5a82f641a0f21ac4fb9ee8b, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8177721311388249922, guid: a8d912aff5a82f641a0f21ac4fb9ee8b, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1240032861
+      objectReference: {fileID: 0}
+    - target: {fileID: 4430923604730892473, guid: a8d912aff5a82f641a0f21ac4fb9ee8b, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5418112693128154863, guid: a8d912aff5a82f641a0f21ac4fb9ee8b, type: 3}
       propertyPath: m_Name
       value: BossProjectile Variant1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5418112693128154863, guid: a8d912aff5a82f641a0f21ac4fb9ee8b, type: 3}
+      propertyPath: m_Layer
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5617738430382420453, guid: a8d912aff5a82f641a0f21ac4fb9ee8b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -70,8 +86,6 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 09bfccffeef9e684c9c6d3bebb254227, type: 3}
     m_RemovedComponents:
     - {fileID: 164033001075328210, guid: a8d912aff5a82f641a0f21ac4fb9ee8b, type: 3}
-    - {fileID: 4430923604730892473, guid: a8d912aff5a82f641a0f21ac4fb9ee8b, type: 3}
-    - {fileID: 5166466313963076215, guid: a8d912aff5a82f641a0f21ac4fb9ee8b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
