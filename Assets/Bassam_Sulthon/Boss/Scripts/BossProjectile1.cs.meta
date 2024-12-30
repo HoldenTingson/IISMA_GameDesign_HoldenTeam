@@ -3,7 +3,9 @@ guid: a2d8fe40e44b94e45a1c6ac668606aac
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - crackle: {fileID: 2475552984125814153, guid: 2c6d6f8fbcd39474a83d0718f75c1b4f, type: 3}
+  - shade: {fileID: 8447571148861035925, guid: d1fd7ea72cb979e40b9562ba8ce35441, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

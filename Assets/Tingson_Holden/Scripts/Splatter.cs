@@ -67,7 +67,6 @@ public class Splatter : E_attack
     {
         if (other.gameObject.CompareTag("Player"))
         {
-
             PlayerHealth.Instance.TakeDamage(2);
         }
     }

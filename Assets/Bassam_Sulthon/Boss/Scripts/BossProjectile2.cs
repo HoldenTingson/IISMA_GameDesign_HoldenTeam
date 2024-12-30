@@ -33,12 +33,13 @@ public class BossProjectile2 : E_attack
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("player"))
+        if (other.gameObject.CompareTag("Player"))
         {
+            PlayerHealth.Instance.TakeDamage(2);
             Destroy(gameObject);
         }
 
-        if (other.gameObject.CompareTag("obstacle"))
+        if (other.gameObject.CompareTag("Obstacle"))
         {
             Destroy(gameObject);
         }

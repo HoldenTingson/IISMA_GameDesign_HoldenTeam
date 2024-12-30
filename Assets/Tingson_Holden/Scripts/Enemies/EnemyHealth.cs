@@ -9,12 +9,14 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private float _knockBackThrust;
 
     public bool TestingMode { get; set; } = false;
+    public bool isBos;
     public int _currentHealth;
     private KnockBack _knockBack;
     private Flash _flash;
 
     private void Awake()
     {
+        if (isBos) return;
         _flash = GetComponent<Flash>();
         _knockBack = GetComponent<KnockBack>();
     }
@@ -30,6 +32,7 @@ public class EnemyHealth : MonoBehaviour
 
         if (!TestingMode)
         {
+            if (isBos) return;
             _knockBack.GetKnockedBack(PlayerController.Instance.transform, _knockBackThrust);
             StartCoroutine(_flash.FlashRoutine());
         }
@@ -53,15 +56,16 @@ public class EnemyHealth : MonoBehaviour
 
     public void DetectHealth()
     {
+        if (isBos) return;
         if (_currentHealth > 0) return;
         if (!TestingMode)
         {
             Instantiate(_deathVfxPrefab, transform.position, Quaternion.identity);
             GetComponent<PickupSpawner>().DropItems();
         }
-            
+
         Destroy(gameObject);
     }
 
-    
+
 }
