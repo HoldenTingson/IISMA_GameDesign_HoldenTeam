@@ -9,12 +9,12 @@ public class Crackle : E_attack
     private float fadeDuration = 1f; // Duration for the fade-out
     private float timer; // Tracks time since object spawned
     private bool isFading = false; // Flag to track when to start fading
-    BoxCollider2D collider;
+    BoxCollider2D boxCollider;
     
 
     void Awake()
     {
-        collider = GetComponent<BoxCollider2D>();
+        boxCollider = GetComponent<BoxCollider2D>();
         sr = GetComponent<SpriteRenderer>();
         damage = 20;
         timer = 0f; // Initialize the timer
@@ -28,7 +28,7 @@ public class Crackle : E_attack
         {
             isFading = true; // Start fading after the delay
             timer = 0f; // Reset the timer for fading
-            collider.enabled = false;
+            boxCollider.enabled = false;
         }
 
         if (isFading)

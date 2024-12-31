@@ -54533,7 +54533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fd13340bf6bdd74fa8e42d048d1ed7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 1000
+  _maxHealth: 10
   _knockBackThrustAmount: 10
   _damageRecoveryTime: 1
   _currentHealth: 0
