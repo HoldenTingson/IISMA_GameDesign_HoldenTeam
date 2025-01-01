@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Pickup : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Pickup : MonoBehaviour
         DashAbility,
         BowItem,
         StaffItem,
+        Trophy
 
     }
 
@@ -49,6 +51,9 @@ public class Pickup : MonoBehaviour
                 break;
             case PickUpType.StaffItem:
                 ActiveInventory.Instance.AddWeapon("Staff");
+                break;
+            case PickUpType.Trophy:
+                SceneManager.LoadScene("Credit");
                 break;
         }
     }
