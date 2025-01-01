@@ -10,7 +10,7 @@ public class BossAttack : MonoBehaviour
     [SerializeField] private float minTimer = 1f;
     [SerializeField] private float maxTimer = 2f;
     [SerializeField] private float attackDelay = 3f;
-    [SerializeField] private float attackRange = 20f;
+    [SerializeField] private float attackRange = 15f;
     private IdleFloat idle;
     [SerializeField] private GameObject Crackle;
     [SerializeField] private GameObject[] Projectile;
