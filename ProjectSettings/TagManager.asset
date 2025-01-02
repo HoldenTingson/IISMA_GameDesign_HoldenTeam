@@ -10,6 +10,7 @@ TagManager:
   - e_attack
   - Boss
   - Obstacle
+  - UI
   layers:
   - Default
   - TransparentFX

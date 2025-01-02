@@ -14,6 +14,6 @@ public class Credit : MonoBehaviour
     private IEnumerator LoadMainMenuAfterCredits()
     {
         yield return new WaitForSeconds(_creditDuration);
-        SceneManager.LoadScene("Level 1");
+        SceneManager.LoadScene("MainMenu");
     }
 }

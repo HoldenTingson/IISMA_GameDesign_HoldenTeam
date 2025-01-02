@@ -6,16 +6,25 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    void Awake()
+    {
+        // Check if GameObjects exist before attempting to destroy them
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            Destroy(player);
+        }
+
+        GameObject ui = GameObject.FindGameObjectWithTag("UI");
+        if (ui != null)
+        {
+            Destroy(ui);
+        }
+    }
     public void startGame()
     {
         Debug.Log("startGame");
         SceneManager.LoadScene("Tingson_Holden/Scenes/Level 1");
-    }
-
-    public void setting()
-    {
-        Debug.Log("Almanac");
-        SceneManager.LoadScene("Anisya_Kirana/Scenes/Almanac");
     }
 
     public void exit()
