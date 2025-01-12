@@ -15,7 +15,6 @@ public class BallMove : MonoBehaviour
     public int dashing = 0; // Dash duration counter
     private bool dashInput = false; // Tracks if dash input was detected
 
-    // Start is called before the first frame update
     void Start()
     {
         health = 100f;
@@ -23,17 +22,14 @@ public class BallMove : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
     }
 
-    // Detect input in Update
     void Update()
     {
-        // Capture movement input
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
-        // Check for dash input
         if (Input.GetKeyDown(KeyCode.LeftShift) && dashing == 0 && movement != Vector2.zero)
         {
-            dashInput = true; // Set dash input flag
+            dashInput = true;
         }
     }
 
@@ -42,9 +38,9 @@ public class BallMove : MonoBehaviour
     {
         if (dashInput && dashing == 0)
         {
-            direction = movement.normalized; // Set dash direction
-            dashing = 6; // Set dash duration
-            dashInput = false; // Reset dash input flag
+            direction = movement.normalized; 
+            dashing = 6; 
+            dashInput = false; 
         }
 
         if (dashing > 0)

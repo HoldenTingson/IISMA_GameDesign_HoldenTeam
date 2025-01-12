@@ -18,13 +18,11 @@ public class BossDeath : MonoBehaviour
     Animator animator;
 
     private bool running = false;
-    // Start is called before the first frame update
     void Start()
     {
         animator = Face.GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (transform.localScale.x <= 0f && !running)

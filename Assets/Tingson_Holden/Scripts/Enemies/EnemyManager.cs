@@ -24,11 +24,11 @@ public class EnemyManager : MonoBehaviour
 
     public void UpdateEnemyList()
     {
-        enemies.Clear(); // Clear the current list to avoid duplicates
+        enemies.Clear();
         GameObject[] enemyObjects = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject enemy in enemyObjects)
         {
-            if (enemy.activeInHierarchy) // Only consider active enemies
+            if (enemy.activeInHierarchy)
             {
                 enemies.Add(enemy);
             }
@@ -57,7 +57,6 @@ public class EnemyManager : MonoBehaviour
         return enemies.Count;
     }
 
-    // Check if all enemies are defeated
     public bool AllEnemiesDefeated()
     {
         UpdateEnemyList();

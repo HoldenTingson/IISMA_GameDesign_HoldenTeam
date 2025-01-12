@@ -20,7 +20,6 @@ public class Splatter : E_attack
             initialColor = spriteRenderer.color;
         }
 
-        // Start a coroutine to disable the collider after the defined time
         StartCoroutine(DisableColliderAfterTime(colliderActiveTime));
     }
 
@@ -30,13 +29,10 @@ public class Splatter : E_attack
         {
             timer += Time.deltaTime;
 
-            // Calculate the alpha value based on elapsed time
             float alpha = Mathf.Lerp(1f, 0f, timer / time);
 
-            // Apply the new color with updated alpha
             spriteRenderer.color = new Color(initialColor.r, initialColor.g, initialColor.b, alpha);
 
-            // Destroy the object when fully faded
             if (timer >= time)
             {
                 Destroy(gameObject);
@@ -48,14 +44,12 @@ public class Splatter : E_attack
     {
         yield return new WaitForSeconds(delay);
 
-        // Disable any collider on the object
         Collider2D collider = GetComponent<Collider2D>();
         if (collider != null)
         {
             collider.enabled = false;
         }
 
-        // Alternatively, if using 3D colliders:
         Collider collider3D = GetComponent<Collider>();
         if (collider3D != null)
         {

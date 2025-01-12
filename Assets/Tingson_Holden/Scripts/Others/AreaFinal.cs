@@ -9,10 +9,8 @@ public class AreaFinal : MonoBehaviour
     {
         if (other.gameObject.GetComponent<PlayerController>())
         {
-            // Check if enemies are still alive or if chest is not destroyed
             if (!EnemyManager.Instance.AllEnemiesDefeated())
             {
-                // If conditions are not met, show the dialogue
                 ResetDialogue();
                 Dialogue.Instance.lines = new string[]
                     { "You must kill all the ghost before you can proceed!", "Try to find and defeat the ghosts." };
@@ -27,10 +25,9 @@ public class AreaFinal : MonoBehaviour
 
     private void ResetDialogue()
     {
-        // Reset the dialogue text if necessary
         if (Dialogue.Instance != null)
         {
-            Dialogue.Instance.ResetDialogue(); // Call the ResetDialogue method to clear and reset dialogue status
+            Dialogue.Instance.ResetDialogue(); 
         }
     }
 

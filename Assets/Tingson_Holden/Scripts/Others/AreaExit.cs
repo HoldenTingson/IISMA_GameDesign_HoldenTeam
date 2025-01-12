@@ -14,10 +14,8 @@ public class AreaExit : MonoBehaviour
     {
         if (other.gameObject.GetComponent<PlayerController>())
         {
-            // Check if enemies are still alive or if chest is not destroyed
             if (EnemyManager.Instance.GetEnemyCount() > 0 || (chestObject != null && chestObject.activeInHierarchy))
             {
-                // If conditions are not met, show the dialogue
                 ResetDialogue();
                 Dialogue.Instance.lines = new string[]
                     { "You must open the chest before you can enter this portal!", "Try to find and open the chest." };
@@ -25,7 +23,6 @@ public class AreaExit : MonoBehaviour
             }
             else
             {
-                // All conditions are met, proceed to the next scene
                 ProceedToNextScene();
             }
         }
@@ -33,16 +30,14 @@ public class AreaExit : MonoBehaviour
 
     private void ResetDialogue()
     {
-        // Reset the dialogue text if necessary
         if (Dialogue.Instance != null)
         {
-            Dialogue.Instance.ResetDialogue(); // Call the ResetDialogue method to clear and reset dialogue status
+            Dialogue.Instance.ResetDialogue();
         }
     }
 
     private void ProceedToNextScene()
     {
-        Debug.Log("All conditions met. Proceeding to the next scene...");
         UIFade.Instance.FadeToBlack();
         SceneManagement.Instance.SetTransitionName(sceneTransitionName);
         StartCoroutine(LoadSceneRoutine());

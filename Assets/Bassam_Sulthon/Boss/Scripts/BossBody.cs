@@ -7,13 +7,12 @@ public class BossBody : MonoBehaviour
 {
     private CapsuleCollider2D cc;
     [SerializeField] private GameObject fill;
-    // Start is called before the first frame update
+
     void Start()
     {
         cc = GetComponent<CapsuleCollider2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         

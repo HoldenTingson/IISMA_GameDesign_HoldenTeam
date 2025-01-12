@@ -14,35 +14,27 @@ public class CurvedProjectile : MonoBehaviour
 
     void Start()
     {
-        // Set starting and ending points
         from = transform.position;
         to = target.position;
 
-        // Define a control point above the midpoint for the arc
         Vector3 midPoint = (from + to) / 2;
         controlPoint = midPoint + new Vector3(0, Vector3.Distance(from, to) / 2, 0);
     }
 
     void FixedUpdate()
     {
-        // Increment progress
         counter += Time.fixedDeltaTime / travelTime;
 
-        // Ensure counter stays within bounds
         counter = Mathf.Clamp01(counter);
 
-        // Calculate the position on the Bezier curve
         Vector3 currentPosition = CalculateBezierPoint(counter, from, controlPoint, to);
 
-        // Move the projectile
         transform.position = currentPosition;
 
-        // Optionally rotate towards the target
         Vector3 direction = (to - transform.position).normalized;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angle);
 
-        // Destroy projectile once it reaches the destination
         if (counter >= 1f)
         {
             GameObject splat = Instantiate(splatter, transform.position, transform.rotation);
@@ -54,7 +46,6 @@ public class CurvedProjectile : MonoBehaviour
         }
     }
 
-    // Quadratic Bezier curve calculation
     Vector3 CalculateBezierPoint(float t, Vector3 p0, Vector3 p1, Vector3 p2)
     {
         float u = 1 - t;

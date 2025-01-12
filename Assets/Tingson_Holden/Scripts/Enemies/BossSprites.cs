@@ -6,12 +6,12 @@ public class BossSprites : MonoBehaviour
 {
     [SerializeField] private List<Sprite> sprites = new List<Sprite>();
     [SerializeField] private SpriteRenderer spriteRenderer;
+
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         
