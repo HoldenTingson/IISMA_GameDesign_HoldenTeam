@@ -6,14 +6,12 @@ public class AnimationController : MonoBehaviour
 {
     public Animator MyAnimator;
     private SpriteRenderer _mySpriteRenderer;
-    // Start is called before the first frame update
+
     void Start()
     {
         MyAnimator = GetComponent<Animator>();
         _mySpriteRenderer = GetComponent<SpriteRenderer>();
     }
-
-    // Update is called once per frame
     void Update()
     {
         

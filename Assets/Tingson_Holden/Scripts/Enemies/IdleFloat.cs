@@ -9,15 +9,13 @@ public class IdleFloat : MonoBehaviour
 
     void Start()
     {
-        startPos = transform.position; // Save the initial position
+        startPos = transform.position;
     }
 
     void Update()
     {
-        // Calculate the floating offset using a sine wave
         float floatOffset = Mathf.Sin(Time.time * Mathf.PI * 2f * floatFrequency) * floatAmplitude;
 
-        // Apply the floating effect to the Y position
         transform.position = startPos + new Vector3(0, floatOffset, 0);
     }
 }

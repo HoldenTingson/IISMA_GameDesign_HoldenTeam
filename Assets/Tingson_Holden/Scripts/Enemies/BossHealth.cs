@@ -16,7 +16,6 @@ public class BossHealth : MonoBehaviour
     {
         if (_health._currentHealth > 0)
         {
-            // Scale the health bar fill based on current health
             float healthPercentage = (float)_health._currentHealth / _health._startingHealth;
             fill.transform.localScale = new Vector3(healthPercentage, 1f, 1f);
         }

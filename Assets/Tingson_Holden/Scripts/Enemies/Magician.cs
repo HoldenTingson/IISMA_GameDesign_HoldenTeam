@@ -39,7 +39,7 @@ public class Magician : MonoBehaviour
 
     IEnumerator LobRoutine()
     {
-        while (true) // Keep shooting until stopped
+        while (true) 
         {
             yield return new WaitForSeconds(Random.Range(min_timer, max_timer));
 
@@ -50,7 +50,7 @@ public class Magician : MonoBehaviour
 
                 yield return new WaitForSeconds(0.35f);
 
-                LobEm(); // Call the Shoot function
+                LobEm(); 
 
                 animator.SetBool("Attacking", false);
                 ai.ChangeState();
@@ -60,7 +60,7 @@ public class Magician : MonoBehaviour
 
     void LobEm()
     {
-        if (target == null) return; // Additional safety check
+        if (target == null) return; 
 
         Shade shadey = shadow.GetComponent<Shade>();
         shadey.target = target.transform.position;

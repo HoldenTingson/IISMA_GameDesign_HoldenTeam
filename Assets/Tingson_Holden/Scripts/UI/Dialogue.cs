@@ -9,9 +9,8 @@ public class Dialogue : Singleton<Dialogue>
     public float textSpeed = 0.05f;
     private int index;
     private bool isDialogueActive = false;
-    private System.Action onDialogueComplete; // Callback for when dialogue ends
+    private System.Action onDialogueComplete; 
 
-    // Static reference to ensure we can always find the dialogue component
     protected override void Awake()
     {
         base.Awake();
@@ -21,7 +20,6 @@ public class Dialogue : Singleton<Dialogue>
 
     void OnEnable()
     {
-        // Attempt to find text component if it's not set
         if (textComponent == null)
         {
             TryFindTextComponent();
@@ -30,7 +28,6 @@ public class Dialogue : Singleton<Dialogue>
 
     private bool TryFindTextComponent()
     {
-        // Try multiple ways to find the text component
         textComponent = GetComponent<TextMeshProUGUI>();
 
         if (textComponent == null)
@@ -50,7 +47,6 @@ public class Dialogue : Singleton<Dialogue>
 
     public void StartDialogue(System.Action callback = null)
     {
-        // Ensure we have a valid text component
         if (this == null)
         {
             Debug.LogError("Dialogue component has been destroyed!");
@@ -63,15 +59,13 @@ public class Dialogue : Singleton<Dialogue>
             return;
         }
 
-        // Reset everything before starting the dialogue
         ResetDialogue();
         index = 0;
         isDialogueActive = true;
-        Time.timeScale = 0f; // Pause the game
-        gameObject.SetActive(true); // Show the dialogue box
-        onDialogueComplete = callback; // Assign callback if provided
+        Time.timeScale = 0f;
+        gameObject.SetActive(true); 
+        onDialogueComplete = callback;
 
-        // Safely disable player controls
         TryDisablePlayerControls();
 
         StartCoroutine(TypeLine());
@@ -110,7 +104,6 @@ public class Dialogue : Singleton<Dialogue>
 
     void Update()
     {
-        // Player can use mouse or Enter to proceed
         if (isDialogueActive && (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Return)))
         {
             if (textComponent != null && textComponent.text == lines[index])
@@ -120,7 +113,7 @@ public class Dialogue : Singleton<Dialogue>
             else if (textComponent != null)
             {
                 StopAllCoroutines();
-                textComponent.text = lines[index]; // Show full line immediately if the player clicks before it's finished
+                textComponent.text = lines[index];
             }
         }
     }
@@ -170,9 +163,9 @@ public class Dialogue : Singleton<Dialogue>
     private void EndDialogue()
     {
         isDialogueActive = false;
-        Time.timeScale = 1f; // Resume the game
-        gameObject.SetActive(false); // Hide the dialogue box
-        onDialogueComplete?.Invoke(); // Invoke the callback if assigned
+        Time.timeScale = 1f; 
+        gameObject.SetActive(false); 
+        onDialogueComplete?.Invoke(); 
 
         TryEnablePlayerControls();
     }
@@ -186,8 +179,6 @@ public class Dialogue : Singleton<Dialogue>
         }
         isDialogueActive = false;
     }
-
-    // Optional: Method to safely check if dialogue is currently active
     public bool IsDialogueActive()
     {
         return isDialogueActive;

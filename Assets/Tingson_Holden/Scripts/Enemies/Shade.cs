@@ -15,18 +15,15 @@ public class Shade : MonoBehaviour
     {
         from = transform.position;
         to = target;
-        speed = (to - from) / travelTime; // Calculate speed based on travelTime
+        speed = (to - from) / travelTime;
     }
 
     void FixedUpdate()
     {
-        // Move towards the target
         transform.position += speed * Time.fixedDeltaTime;
 
-        // Increment the counter
         counter += Time.fixedDeltaTime;
 
-        // Destroy the object if it reaches or surpasses the target
         if (counter >= travelTime || Vector3.Distance(transform.position, to) <= 0.1f)
         {
             Destroy(gameObject);

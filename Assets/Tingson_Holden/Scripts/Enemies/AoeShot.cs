@@ -31,23 +31,6 @@ public class AoeShot : MonoBehaviour
         new Vector2(-0.5f, -1),
         new Vector2(0.5f, -1),
         new Vector2(1, -0.5f),
-        
-        // new Vector2(-1, 0.25f),
-        // new Vector2(-1, -0.25f),
-        // new Vector2(-1, -0.75f),
-        // new Vector2(-0.75f, -1),
-        // new Vector2(-0.25f, -1),
-        // new Vector2(0.25f, -1),
-        // new Vector2(0.75f, -1),
-        // new Vector2(1, -0.75f),
-        // new Vector2(1, -0.25f),
-        // new Vector2(1, 0.25f),
-        // new Vector2(1, 0.75f),
-        // new Vector2(0.75f, 1),
-        // new Vector2(0.25f, 1),
-        // new Vector2(-0.25f, 1),
-        // new Vector2(-0.75f, 1),
-        // new Vector2(-1, 0.75f),
     };
     void Start()
     {
@@ -71,27 +54,24 @@ public class AoeShot : MonoBehaviour
     
     IEnumerator ShootRoutine()
     {
-        while (true) // Keep shooting until stopped
+        while (true) 
         {
-            yield return new WaitForSeconds(Random.Range(min_timer, max_timer)); // Wait for a random time
+            yield return new WaitForSeconds(Random.Range(min_timer, max_timer));
             _ai.ChangeState();
             windup = Mathf.CeilToInt(1f / Time.fixedDeltaTime); 
             yield return new WaitForSeconds(1f);
             _ai.ChangeState();
-            Shoot(); // Call the Shoot function
+            Shoot();
         }
     }
     public void Shoot()
     {
         foreach (Vector2 direction in directions)
         {
-            // Instantiate a projectile
             GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
 
-            // Normalize the direction and rotate it if needed
             Vector2 finalDirection = Quaternion.Euler(0, 0, angleOffset) * direction.normalized;
 
-            // Apply force to the projectile
             Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
             if (rb != null)
             {

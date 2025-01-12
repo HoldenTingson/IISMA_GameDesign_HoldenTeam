@@ -8,7 +8,6 @@ public class MainMenu : MonoBehaviour
 {
     void Awake()
     {
-        // Check if GameObjects exist before attempting to destroy them
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
         {

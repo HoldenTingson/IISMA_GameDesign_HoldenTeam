@@ -17,7 +17,7 @@ public class Crackle : E_attack
         boxCollider = GetComponent<BoxCollider2D>();
         sr = GetComponent<SpriteRenderer>();
         damage = 20;
-        timer = 0f; // Initialize the timer
+        timer = 0f; 
     }
 
     void Update()
@@ -26,19 +26,17 @@ public class Crackle : E_attack
 
         if (timer >= delay && !isFading)
         {
-            isFading = true; // Start fading after the delay
-            timer = 0f; // Reset the timer for fading
+            isFading = true;
+            timer = 0f;
             boxCollider.enabled = false;
         }
 
         if (isFading)
         {
-            // Gradually reduce the alpha value during the fade duration
-            float alpha = Mathf.Clamp01(1f - (timer / fadeDuration)); // Calculate alpha based on fade progress
+            float alpha = Mathf.Clamp01(1f - (timer / fadeDuration)); 
             Color currentColor = sr.color;
             sr.color = new Color(currentColor.r, currentColor.g, currentColor.b, alpha);
 
-            // Destroy the object when fully faded
             if (timer >= fadeDuration)
             {
                 Destroy(gameObject);
